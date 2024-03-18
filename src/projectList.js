@@ -1,6 +1,7 @@
 import { projectList } from "./project";
 import hashSvg from "./assets/hash.svg";
 import { createButton } from "./modules/createButton";
+import { getRemoveButtons } from "./renderDom";
 
 export const projectContainer = document.getElementById('projects-list');
 
@@ -36,10 +37,6 @@ export function renderProjects() {
 
     projectDiv.append(projectButtonContainer);
 
-    // return {
-    //   projectBox,
-    //   exit: exitButton,
-    //   remove: removeButton
-    // }
+    getRemoveButtons(projectContainer)
   })
 }
