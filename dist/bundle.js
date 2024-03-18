@@ -681,6 +681,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _project__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./project */ "./src/project.js");
 /* harmony import */ var _assets_hash_svg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./assets/hash.svg */ "./src/assets/hash.svg");
 /* harmony import */ var _modules_createButton__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/createButton */ "./src/modules/createButton.js");
+/* harmony import */ var _renderDom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./renderDom */ "./src/renderDom.js");
+
 
 
 
@@ -719,11 +721,88 @@ function renderProjects() {
 
     projectDiv.append(projectButtonContainer);
 
-    // return {
-    //   projectBox,
-    //   exit: exitButton,
-    //   remove: removeButton
-    // }
+    (0,_renderDom__WEBPACK_IMPORTED_MODULE_3__.getRemoveButtons)(projectContainer)
+  })
+}
+
+/***/ }),
+
+/***/ "./src/renderDom.js":
+/*!**************************!*\
+  !*** ./src/renderDom.js ***!
+  \**************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   createEditInput: () => (/* binding */ createEditInput),
+/* harmony export */   createInput: () => (/* binding */ createInput),
+/* harmony export */   createLabel: () => (/* binding */ createLabel),
+/* harmony export */   createRadioInput: () => (/* binding */ createRadioInput),
+/* harmony export */   getRemoveButtons: () => (/* binding */ getRemoveButtons),
+/* harmony export */   index: () => (/* binding */ index),
+/* harmony export */   taskIndex: () => (/* binding */ taskIndex)
+/* harmony export */ });
+/* harmony import */ var _project__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./project */ "./src/project.js");
+/* harmony import */ var _projectList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./projectList */ "./src/projectList.js");
+
+
+
+let index = 0;
+let taskIndex = 0;
+
+function createLabel(text, inputId, labelId, parentElement) {
+  const inputLabel = document.createElement('label');
+  inputLabel.htmlFor = inputId;
+  inputLabel.id = labelId;
+  inputLabel.textContent = text;
+  parentElement.append(inputLabel);
+}
+
+function createInput(
+  type,
+  inputId,
+  parentElement
+) {
+  const inputElement = document.createElement('input');
+  inputElement.type = type;
+  inputElement.id = inputId;
+  parentElement.append(inputElement);
+}
+
+function createEditInput(inputId, parentElement, oldElement, type, preFilledValue) {
+  const inputElement = document.createElement('input');
+  inputElement.id = inputId;
+  inputElement.type = type;
+  inputElement.value = preFilledValue;
+  parentElement.replaceWith(inputElement, oldElement);
+}
+
+function createRadioInput(inputClass, parentElement, valueArray) {
+  const elementContainer = document.createElement('div')
+  elementContainer.id = 'radio-container'
+  parentElement.append(elementContainer)
+
+
+}
+
+// функция удаления
+function getRemoveButtons(container) {
+  let removeButtons = container.querySelectorAll('.remove-button')
+  const removeButtonArray = Array.from(removeButtons)
+  removeButtons.forEach(button => {
+      button.addEventListener('click', () => {
+          if(container === _projectList__WEBPACK_IMPORTED_MODULE_1__.projectContainer) {
+              index = removeButtonArray.indexOf(button)
+              ;(0,_project__WEBPACK_IMPORTED_MODULE_0__.deleteProject)(index)
+          }
+          else if(container === taskContainer) {
+              taskIndex = removeButtonArray.indexOf(button)
+              projectList[index].deleteTask(taskIndex)
+          }
+          (0,_projectList__WEBPACK_IMPORTED_MODULE_1__.renderProjects)()
+          // renderTasks()
+      })
   })
 }
 
