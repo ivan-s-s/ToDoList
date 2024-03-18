@@ -479,6 +479,264 @@ function styleTagTransform(css, styleElement) {
 }
 module.exports = styleTagTransform;
 
+/***/ }),
+
+/***/ "./src/modules/createButton.js":
+/*!*************************************!*\
+  !*** ./src/modules/createButton.js ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   createButton: () => (/* binding */ createButton)
+/* harmony export */ });
+function createButton(
+  parentElement,
+  buttonId,
+  className,
+  text
+) {
+  const buttonElement = document.createElement('button');
+  buttonElement.id = buttonId;
+  buttonElement.className = className;
+  buttonElement.textContent = text;
+  parentElement.append(buttonElement);
+
+  return buttonElement;
+}
+
+
+
+/***/ }),
+
+/***/ "./src/modules/createInput.js":
+/*!************************************!*\
+  !*** ./src/modules/createInput.js ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   createInput: () => (/* binding */ createInput),
+/* harmony export */   createLabel: () => (/* binding */ createLabel)
+/* harmony export */ });
+function createLabel(
+  parentElement,
+  labelId = '',
+  inputId = '',
+  text = ''
+) {
+  const inputLabel = document.createElement('label');
+  inputLabel.id = labelId;
+  inputLabel.htmlFor = inputId;
+  inputLabel.textContent = text;
+  parentElement.append(inputLabel);
+}
+
+function createInput(
+  parentElement,
+  inputType = 'text',
+  inputId = '',
+  className = '',
+  value = '',
+  name = '',
+  oldElement
+) {
+  const inputElement = document.createElement('input');
+  inputElement.type = inputType;
+  inputElement.id = inputId;
+  inputElement.className = className;
+  inputElement.name = name;
+  inputElement.value = value;
+  if (oldElement) {
+    parentElement.replaceWith(inputElement, oldElement);
+  } else {
+    parentElement.append(inputElement);
+  }
+}
+
+// нужно добавить редактирование radio элемента
+
+/***/ }),
+
+/***/ "./src/project.js":
+/*!************************!*\
+  !*** ./src/project.js ***!
+  \************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   addProject: () => (/* binding */ addProject),
+/* harmony export */   allTasksList: () => (/* binding */ allTasksList),
+/* harmony export */   "default": () => (/* binding */ Project),
+/* harmony export */   deleteProject: () => (/* binding */ deleteProject),
+/* harmony export */   getAllTasks: () => (/* binding */ getAllTasks),
+/* harmony export */   projectList: () => (/* binding */ projectList)
+/* harmony export */ });
+
+let projectList = [];
+let allTasksList = [];
+
+class Project {
+  constructor(name) {
+    this.name = name;
+    this.taskList = [];
+  }
+
+  addTask(title, description, createdDate, dueDate, priority) {
+    const newTask = new Task(title, description, createdDate, dueDate, priority);
+    this.taskList.push(newTask);
+  }
+
+  deleteTask(index) {
+    this.taskList.splice(index, 1)
+  }
+}
+
+class Task {
+  constructor(title, description, createdDate, dueDate, priority) {
+    this.title = title;
+    this.description = description;
+    this.createdDate = createdDate;
+    this.dueDate = dueDate;
+    this.priority = priority;
+  }
+}
+
+function addProject(projectName) {
+  const newProject = new Project(projectName);
+  projectList.push(newProject);
+  return newProject;
+}
+
+function deleteProject(index) {
+  projectList.splice(index, 1);
+}
+
+function getAllTasks() {
+  allTasksList = [];
+  projectList.forEach((project, index) => {
+    if(index > 0) {
+      project.taskList.forEach(task => {
+        allTasksList.push(task)
+      })
+    }
+  })
+}
+
+/***/ }),
+
+/***/ "./src/projectForm.js":
+/*!****************************!*\
+  !*** ./src/projectForm.js ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   newProjectButton: () => (/* binding */ newProjectButton),
+/* harmony export */   renderProjectForm: () => (/* binding */ renderProjectForm)
+/* harmony export */ });
+/* harmony import */ var _modules_createInput__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/createInput */ "./src/modules/createInput.js");
+/* harmony import */ var _modules_createButton__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/createButton */ "./src/modules/createButton.js");
+
+
+
+const newProjectButton = document.querySelector('#new-project-button');
+// создание формы
+function renderProjectForm() {
+  const newProjectForm = document.createElement('div');
+  newProjectForm.id = 'new-project-form';
+  newProjectButton.before(newProjectForm);
+
+  (0,_modules_createInput__WEBPACK_IMPORTED_MODULE_0__.createLabel)(newProjectForm, 'project-name-label', 'project-name-input', 'Project Name: ')
+  ;(0,_modules_createInput__WEBPACK_IMPORTED_MODULE_0__.createInput)(newProjectForm, 'text', 'project-name-input', 'input-text')
+
+  const createButtonForm = (0,_modules_createButton__WEBPACK_IMPORTED_MODULE_1__.createButton)(newProjectForm, "new-project-create-button-id", "new-project-create-button-class", "Create");
+
+  const cancelButtonForm = (0,_modules_createButton__WEBPACK_IMPORTED_MODULE_1__.createButton)(newProjectForm, "new-project-cancel-button-id", "new-project-cancel-button-class", "Cancel");
+
+  return {
+    newProjectForm,
+    createButton: createButtonForm,
+    cancleButton: cancelButtonForm
+  }
+}
+
+/***/ }),
+
+/***/ "./src/projectList.js":
+/*!****************************!*\
+  !*** ./src/projectList.js ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   projectContainer: () => (/* binding */ projectContainer),
+/* harmony export */   renderProjects: () => (/* binding */ renderProjects)
+/* harmony export */ });
+/* harmony import */ var _project__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./project */ "./src/project.js");
+/* harmony import */ var _assets_hash_svg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./assets/hash.svg */ "./src/assets/hash.svg");
+/* harmony import */ var _modules_createButton__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/createButton */ "./src/modules/createButton.js");
+
+
+
+
+const projectContainer = document.getElementById('projects-list');
+
+function renderProjects() {
+  projectContainer.innerHTML = '';
+
+  _project__WEBPACK_IMPORTED_MODULE_0__.projectList.forEach((project, index) => {
+    const projectBox = document.createElement('li');
+    projectBox.className = 'project';
+    projectContainer.append(projectBox);
+
+    const projectDiv = document.createElement('div');
+    projectDiv.className = 'project-div';
+    projectBox.append(projectDiv);
+
+    const projectIcon = document.createElement('span');
+    projectIcon.className = 'project-icon';
+
+    const img = document.createElement('img');
+    img.src = _assets_hash_svg__WEBPACK_IMPORTED_MODULE_1__;
+    projectIcon.append(img);
+
+    const projectTitle = document.createElement('span');
+    projectTitle.className = 'project-title';
+    projectTitle.textContent = project.name;
+    projectDiv.append(projectIcon, projectTitle);
+
+    const projectButtonContainer = document.createElement('div');
+    projectButtonContainer.className = 'button-container';
+
+    (0,_modules_createButton__WEBPACK_IMPORTED_MODULE_2__.createButton)(projectButtonContainer, 'project-edit-btn', 'edit-button', 'Edit');
+    (0,_modules_createButton__WEBPACK_IMPORTED_MODULE_2__.createButton)(projectButtonContainer, 'project-remove-btn', 'remove-button', 'X');
+
+    projectDiv.append(projectButtonContainer);
+
+    // return {
+    //   projectBox,
+    //   exit: exitButton,
+    //   remove: removeButton
+    // }
+  })
+}
+
+/***/ }),
+
+/***/ "./src/assets/hash.svg":
+/*!*****************************!*\
+  !*** ./src/assets/hash.svg ***!
+  \*****************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "hash.svg";
+
 /***/ })
 
 /******/ 	});
@@ -532,6 +790,18 @@ module.exports = styleTagTransform;
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/global */
+/******/ 	(() => {
+/******/ 		__webpack_require__.g = (function() {
+/******/ 			if (typeof globalThis === 'object') return globalThis;
+/******/ 			try {
+/******/ 				return this || new Function('return this')();
+/******/ 			} catch (e) {
+/******/ 				if (typeof window === 'object') return window;
+/******/ 			}
+/******/ 		})();
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
@@ -548,6 +818,29 @@ module.exports = styleTagTransform;
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/publicPath */
+/******/ 	(() => {
+/******/ 		var scriptUrl;
+/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
+/******/ 		var document = __webpack_require__.g.document;
+/******/ 		if (!scriptUrl && document) {
+/******/ 			if (document.currentScript)
+/******/ 				scriptUrl = document.currentScript.src;
+/******/ 			if (!scriptUrl) {
+/******/ 				var scripts = document.getElementsByTagName("script");
+/******/ 				if(scripts.length) {
+/******/ 					var i = scripts.length - 1;
+/******/ 					while (i > -1 && (!scriptUrl || !/^http(s?):/.test(scriptUrl))) scriptUrl = scripts[i--].src;
+/******/ 				}
+/******/ 			}
+/******/ 		}
+/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
+/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
+/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
+/******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
+/******/ 		__webpack_require__.p = scriptUrl;
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/nonce */
 /******/ 	(() => {
 /******/ 		__webpack_require__.nc = undefined;
@@ -562,8 +855,39 @@ var __webpack_exports__ = {};
   \**********************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _styles_main_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/main.css */ "./src/styles/main.css");
+/* harmony import */ var _projectForm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./projectForm */ "./src/projectForm.js");
+/* harmony import */ var _projectList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./projectList */ "./src/projectList.js");
+/* harmony import */ var _project__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./project */ "./src/project.js");
 
 
+
+
+
+
+
+
+_projectForm__WEBPACK_IMPORTED_MODULE_1__.newProjectButton.addEventListener('click', () => {
+  if(_projectList__WEBPACK_IMPORTED_MODULE_2__.projectContainer.nextElementSibling != _projectForm__WEBPACK_IMPORTED_MODULE_1__.newProjectButton) {
+    return
+  }
+  const form = (0,_projectForm__WEBPACK_IMPORTED_MODULE_1__.renderProjectForm)();
+  form.createButton.addEventListener('click', () => {
+    const element = document.getElementById('project-name-input')
+    const name = element.value
+    if (!name) {
+      console.log('Enter the name of your project pls!')
+    } else {
+      (0,_project__WEBPACK_IMPORTED_MODULE_3__.addProject)(name)
+      ;(0,_projectList__WEBPACK_IMPORTED_MODULE_2__.renderProjects)()
+      element.value = ''
+    }
+  })
+  form.cancleButton.addEventListener('click', () => {
+    form.newProjectForm.remove()
+  })
+})
+
+;(0,_projectList__WEBPACK_IMPORTED_MODULE_2__.renderProjects)();
 // const div = document.createElement('div');
 // div.innerHTML = 'Hello';
 // div.classList.add('hello');
