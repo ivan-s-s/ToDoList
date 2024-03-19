@@ -28,9 +28,22 @@ export function createInput(
   inputElement.value = value;
   if (oldElement) {
     parentElement.replaceWith(inputElement, oldElement);
-  } else {
+  } else if (parentElement) {
     parentElement.append(inputElement);
+  } else {
+    return inputElement;
   }
+}
+
+export function createEditInput(
+  className,
+  value,
+  oldElement
+) {
+  const inputElement = document.createElement('input');
+  inputElement.className = className;
+  inputElement.value = value;
+  oldElement.replaceWith(inputElement);
 }
 
 // нужно добавить редактирование radio элемента
