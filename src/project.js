@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from 'uuid';
 
 export let projectList = [];
 export let allTasksList = [];
@@ -5,11 +6,12 @@ export let allTasksList = [];
 export default class Project {
   constructor(name) {
     this.name = name;
+    this.id = uuidv4();
     this.taskList = [];
   }
 
   addTask(title, description, createdDate, dueDate, priority) {
-    const newTask = new Task(title, description, createdDate, dueDate, priority);
+    const newTask = new Task(title, description, createdDate, dueDate, priority, this.id);
     this.taskList.push(newTask);
   }
 
@@ -19,12 +21,13 @@ export default class Project {
 }
 
 class Task {
-  constructor(title, description, createdDate, dueDate, priority) {
+  constructor(title, description, createdDate, dueDate, priority, projectId) {
     this.title = title;
     this.description = description;
     this.createdDate = createdDate;
     this.dueDate = dueDate;
     this.priority = priority;
+    this.projectId = projectId;
   }
 }
 
