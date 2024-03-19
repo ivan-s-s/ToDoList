@@ -481,6 +481,182 @@ module.exports = styleTagTransform;
 
 /***/ }),
 
+/***/ "./node_modules/uuid/dist/esm-browser/native.js":
+/*!******************************************************!*\
+  !*** ./node_modules/uuid/dist/esm-browser/native.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+const randomUUID = typeof crypto !== 'undefined' && crypto.randomUUID && crypto.randomUUID.bind(crypto);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  randomUUID
+});
+
+/***/ }),
+
+/***/ "./node_modules/uuid/dist/esm-browser/regex.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/uuid/dist/esm-browser/regex.js ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (/^(?:[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}|00000000-0000-0000-0000-000000000000)$/i);
+
+/***/ }),
+
+/***/ "./node_modules/uuid/dist/esm-browser/rng.js":
+/*!***************************************************!*\
+  !*** ./node_modules/uuid/dist/esm-browser/rng.js ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ rng)
+/* harmony export */ });
+// Unique ID creation requires a high quality random # generator. In the browser we therefore
+// require the crypto API and do not support built-in fallback to lower quality random number
+// generators (like Math.random()).
+let getRandomValues;
+const rnds8 = new Uint8Array(16);
+function rng() {
+  // lazy load so that environments that need to polyfill have a chance to do so
+  if (!getRandomValues) {
+    // getRandomValues needs to be invoked in a context where "this" is a Crypto implementation.
+    getRandomValues = typeof crypto !== 'undefined' && crypto.getRandomValues && crypto.getRandomValues.bind(crypto);
+
+    if (!getRandomValues) {
+      throw new Error('crypto.getRandomValues() not supported. See https://github.com/uuidjs/uuid#getrandomvalues-not-supported');
+    }
+  }
+
+  return getRandomValues(rnds8);
+}
+
+/***/ }),
+
+/***/ "./node_modules/uuid/dist/esm-browser/stringify.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/uuid/dist/esm-browser/stringify.js ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
+/* harmony export */   unsafeStringify: () => (/* binding */ unsafeStringify)
+/* harmony export */ });
+/* harmony import */ var _validate_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./validate.js */ "./node_modules/uuid/dist/esm-browser/validate.js");
+
+/**
+ * Convert array of 16 byte values to UUID string format of the form:
+ * XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+ */
+
+const byteToHex = [];
+
+for (let i = 0; i < 256; ++i) {
+  byteToHex.push((i + 0x100).toString(16).slice(1));
+}
+
+function unsafeStringify(arr, offset = 0) {
+  // Note: Be careful editing this code!  It's been tuned for performance
+  // and works in ways you may not expect. See https://github.com/uuidjs/uuid/pull/434
+  return byteToHex[arr[offset + 0]] + byteToHex[arr[offset + 1]] + byteToHex[arr[offset + 2]] + byteToHex[arr[offset + 3]] + '-' + byteToHex[arr[offset + 4]] + byteToHex[arr[offset + 5]] + '-' + byteToHex[arr[offset + 6]] + byteToHex[arr[offset + 7]] + '-' + byteToHex[arr[offset + 8]] + byteToHex[arr[offset + 9]] + '-' + byteToHex[arr[offset + 10]] + byteToHex[arr[offset + 11]] + byteToHex[arr[offset + 12]] + byteToHex[arr[offset + 13]] + byteToHex[arr[offset + 14]] + byteToHex[arr[offset + 15]];
+}
+
+function stringify(arr, offset = 0) {
+  const uuid = unsafeStringify(arr, offset); // Consistency check for valid UUID.  If this throws, it's likely due to one
+  // of the following:
+  // - One or more input array values don't map to a hex octet (leading to
+  // "undefined" in the uuid)
+  // - Invalid input values for the RFC `version` or `variant` fields
+
+  if (!(0,_validate_js__WEBPACK_IMPORTED_MODULE_0__["default"])(uuid)) {
+    throw TypeError('Stringified UUID is invalid');
+  }
+
+  return uuid;
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (stringify);
+
+/***/ }),
+
+/***/ "./node_modules/uuid/dist/esm-browser/v4.js":
+/*!**************************************************!*\
+  !*** ./node_modules/uuid/dist/esm-browser/v4.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _native_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./native.js */ "./node_modules/uuid/dist/esm-browser/native.js");
+/* harmony import */ var _rng_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./rng.js */ "./node_modules/uuid/dist/esm-browser/rng.js");
+/* harmony import */ var _stringify_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./stringify.js */ "./node_modules/uuid/dist/esm-browser/stringify.js");
+
+
+
+
+function v4(options, buf, offset) {
+  if (_native_js__WEBPACK_IMPORTED_MODULE_0__["default"].randomUUID && !buf && !options) {
+    return _native_js__WEBPACK_IMPORTED_MODULE_0__["default"].randomUUID();
+  }
+
+  options = options || {};
+  const rnds = options.random || (options.rng || _rng_js__WEBPACK_IMPORTED_MODULE_1__["default"])(); // Per 4.4, set bits for version and `clock_seq_hi_and_reserved`
+
+  rnds[6] = rnds[6] & 0x0f | 0x40;
+  rnds[8] = rnds[8] & 0x3f | 0x80; // Copy bytes to buffer, if provided
+
+  if (buf) {
+    offset = offset || 0;
+
+    for (let i = 0; i < 16; ++i) {
+      buf[offset + i] = rnds[i];
+    }
+
+    return buf;
+  }
+
+  return (0,_stringify_js__WEBPACK_IMPORTED_MODULE_2__.unsafeStringify)(rnds);
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (v4);
+
+/***/ }),
+
+/***/ "./node_modules/uuid/dist/esm-browser/validate.js":
+/*!********************************************************!*\
+  !*** ./node_modules/uuid/dist/esm-browser/validate.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _regex_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./regex.js */ "./node_modules/uuid/dist/esm-browser/regex.js");
+
+
+function validate(uuid) {
+  return typeof uuid === 'string' && _regex_js__WEBPACK_IMPORTED_MODULE_0__["default"].test(uuid);
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (validate);
+
+/***/ }),
+
 /***/ "./src/modules/createButton.js":
 /*!*************************************!*\
   !*** ./src/modules/createButton.js ***!
@@ -489,7 +665,8 @@ module.exports = styleTagTransform;
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   createButton: () => (/* binding */ createButton)
+/* harmony export */   createButton: () => (/* binding */ createButton),
+/* harmony export */   createEditButtonsContainer: () => (/* binding */ createEditButtonsContainer)
 /* harmony export */ });
 function createButton(
   parentElement,
@@ -506,7 +683,17 @@ function createButton(
   return buttonElement;
 }
 
+function createEditButtonsContainer(
+  oldElement
+) {
+  const buttonContainer = document.createElement('div');
+  buttonContainer.className = 'button-container';
 
+  createButton(buttonContainer, '', 'button-container-save', 'Save');
+  createButton(buttonContainer, '', 'button-container-cancel', 'Cancel');
+
+  oldElement.replaceWith(buttonContainer);
+}
 
 /***/ }),
 
@@ -518,6 +705,7 @@ function createButton(
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   createEditInput: () => (/* binding */ createEditInput),
 /* harmony export */   createInput: () => (/* binding */ createInput),
 /* harmony export */   createLabel: () => (/* binding */ createLabel)
 /* harmony export */ });
@@ -551,9 +739,22 @@ function createInput(
   inputElement.value = value;
   if (oldElement) {
     parentElement.replaceWith(inputElement, oldElement);
-  } else {
+  } else if (parentElement) {
     parentElement.append(inputElement);
+  } else {
+    return inputElement;
   }
+}
+
+function createEditInput(
+  className,
+  value,
+  oldElement
+) {
+  const inputElement = document.createElement('input');
+  inputElement.className = className;
+  inputElement.value = value;
+  oldElement.replaceWith(inputElement);
 }
 
 // нужно добавить редактирование radio элемента
@@ -575,6 +776,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   getAllTasks: () => (/* binding */ getAllTasks),
 /* harmony export */   projectList: () => (/* binding */ projectList)
 /* harmony export */ });
+/* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! uuid */ "./node_modules/uuid/dist/esm-browser/v4.js");
+
 
 let projectList = [];
 let allTasksList = [];
@@ -582,11 +785,12 @@ let allTasksList = [];
 class Project {
   constructor(name) {
     this.name = name;
+    this.id = (0,uuid__WEBPACK_IMPORTED_MODULE_0__["default"])();
     this.taskList = [];
   }
 
   addTask(title, description, createdDate, dueDate, priority) {
-    const newTask = new Task(title, description, createdDate, dueDate, priority);
+    const newTask = new Task(title, description, createdDate, dueDate, priority, this.id);
     this.taskList.push(newTask);
   }
 
@@ -596,12 +800,13 @@ class Project {
 }
 
 class Task {
-  constructor(title, description, createdDate, dueDate, priority) {
+  constructor(title, description, createdDate, dueDate, priority, projectId) {
     this.title = title;
     this.description = description;
     this.createdDate = createdDate;
     this.dueDate = dueDate;
     this.priority = priority;
+    this.projectId = projectId;
   }
 }
 
@@ -676,12 +881,15 @@ function renderProjectForm() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   projectContainer: () => (/* binding */ projectContainer),
+/* harmony export */   renderProjectEdit: () => (/* binding */ renderProjectEdit),
 /* harmony export */   renderProjects: () => (/* binding */ renderProjects)
 /* harmony export */ });
 /* harmony import */ var _project__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./project */ "./src/project.js");
 /* harmony import */ var _assets_hash_svg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./assets/hash.svg */ "./src/assets/hash.svg");
 /* harmony import */ var _modules_createButton__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/createButton */ "./src/modules/createButton.js");
 /* harmony import */ var _renderDom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./renderDom */ "./src/renderDom.js");
+/* harmony import */ var _modules_createInput__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/createInput */ "./src/modules/createInput.js");
+
 
 
 
@@ -692,9 +900,10 @@ const projectContainer = document.getElementById('projects-list');
 function renderProjects() {
   projectContainer.innerHTML = '';
 
-  _project__WEBPACK_IMPORTED_MODULE_0__.projectList.forEach((project, index) => {
+  _project__WEBPACK_IMPORTED_MODULE_0__.projectList.forEach(project => {
     const projectBox = document.createElement('li');
     projectBox.className = 'project';
+    // projectBox.id = project.id;
     projectContainer.append(projectBox);
 
     const projectDiv = document.createElement('div');
@@ -716,13 +925,28 @@ function renderProjects() {
     const projectButtonContainer = document.createElement('div');
     projectButtonContainer.className = 'button-container';
 
-    (0,_modules_createButton__WEBPACK_IMPORTED_MODULE_2__.createButton)(projectButtonContainer, 'project-edit-btn', 'edit-button', 'Edit');
-    (0,_modules_createButton__WEBPACK_IMPORTED_MODULE_2__.createButton)(projectButtonContainer, 'project-remove-btn', 'remove-button', 'X');
+    (0,_modules_createButton__WEBPACK_IMPORTED_MODULE_2__.createButton)(projectButtonContainer, '', 'edit-button', 'Edit');
+    (0,_modules_createButton__WEBPACK_IMPORTED_MODULE_2__.createButton)(projectButtonContainer, '', 'remove-button', 'X');
 
     projectDiv.append(projectButtonContainer);
-
-    (0,_renderDom__WEBPACK_IMPORTED_MODULE_3__.getRemoveButtons)(projectContainer)
   })
+  ;(0,_renderDom__WEBPACK_IMPORTED_MODULE_3__.getRemoveButtons)(projectContainer)
+  ;(0,_renderDom__WEBPACK_IMPORTED_MODULE_3__.getEditButtons)(projectContainer)
+}
+
+function renderProjectEdit(e, index) {
+  console.log('edit start')
+
+  const projectBox = e.target.closest('li');
+  const projectDiv = projectBox.firstChild;
+
+  const titleSpan = projectDiv.childNodes[1];
+  const title = titleSpan.textContent;
+  (0,_modules_createInput__WEBPACK_IMPORTED_MODULE_4__.createEditInput)('edit-form-input', title, titleSpan);
+
+  const buttonsDiv = projectDiv.lastChild;
+  
+  (0,_modules_createButton__WEBPACK_IMPORTED_MODULE_2__.createEditButtonsContainer)(buttonsDiv);
 }
 
 /***/ }),
@@ -735,10 +959,7 @@ function renderProjects() {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   createEditInput: () => (/* binding */ createEditInput),
-/* harmony export */   createInput: () => (/* binding */ createInput),
-/* harmony export */   createLabel: () => (/* binding */ createLabel),
-/* harmony export */   createRadioInput: () => (/* binding */ createRadioInput),
+/* harmony export */   getEditButtons: () => (/* binding */ getEditButtons),
 /* harmony export */   getRemoveButtons: () => (/* binding */ getRemoveButtons),
 /* harmony export */   index: () => (/* binding */ index),
 /* harmony export */   taskIndex: () => (/* binding */ taskIndex)
@@ -751,56 +972,62 @@ __webpack_require__.r(__webpack_exports__);
 let index = 0;
 let taskIndex = 0;
 
-function createLabel(text, inputId, labelId, parentElement) {
-  const inputLabel = document.createElement('label');
-  inputLabel.htmlFor = inputId;
-  inputLabel.id = labelId;
-  inputLabel.textContent = text;
-  parentElement.append(inputLabel);
-}
 
-function createInput(
-  type,
-  inputId,
-  parentElement
-) {
-  const inputElement = document.createElement('input');
-  inputElement.type = type;
-  inputElement.id = inputId;
-  parentElement.append(inputElement);
-}
-
-function createEditInput(inputId, parentElement, oldElement, type, preFilledValue) {
-  const inputElement = document.createElement('input');
-  inputElement.id = inputId;
-  inputElement.type = type;
-  inputElement.value = preFilledValue;
-  parentElement.replaceWith(inputElement, oldElement);
-}
-
-function createRadioInput(inputClass, parentElement, valueArray) {
-  const elementContainer = document.createElement('div')
-  elementContainer.id = 'radio-container'
-  parentElement.append(elementContainer)
-
-
-}
 
 // функция удаления
+// export function getRemoveButtons(container) {
+//   let removeButtons = container.querySelectorAll('.remove-button')
+//   const removeButtonArray = Array.from(removeButtons)
+//   removeButtons.forEach(button => {
+//       button.addEventListener('click', (e) => {
+//           index = removeButtonArray.indexOf(button)
+//           if(container === projectContainer) {
+//               console.log(e.target)
+//               deleteProject(index)
+//           }
+//           else if(container === taskContainer) {
+//               taskIndex = removeButtonArray.indexOf(button)
+//               projectList[index].deleteTask(taskIndex)
+//           }
+//           renderProjects()
+//           // renderTasks()
+//       })
+//   })
+// }
+
+
+
+// вешаем слушатель событий на кнопку удаления
 function getRemoveButtons(container) {
   let removeButtons = container.querySelectorAll('.remove-button')
-  const removeButtonArray = Array.from(removeButtons)
-  removeButtons.forEach(button => {
-      button.addEventListener('click', () => {
+  removeButtons.forEach((button, index) => {
+      button.addEventListener('click', (e) => {
           if(container === _projectList__WEBPACK_IMPORTED_MODULE_1__.projectContainer) {
-              index = removeButtonArray.indexOf(button)
-              ;(0,_project__WEBPACK_IMPORTED_MODULE_0__.deleteProject)(index)
+            console.log(e.target)
+            ;(0,_project__WEBPACK_IMPORTED_MODULE_0__.deleteProject)(index)
           }
           else if(container === taskContainer) {
-              taskIndex = removeButtonArray.indexOf(button)
-              projectList[index].deleteTask(taskIndex)
+            // не решенная задача, как определить индекс - решить после реализации тасков
+            projectList[index].deleteTask(taskIndex)
           }
           (0,_projectList__WEBPACK_IMPORTED_MODULE_1__.renderProjects)()
+          
+          // renderTasks()
+      })
+  })
+}
+
+// кнопка редактирования проекта
+function getEditButtons(container) {
+  let editButtons = container.querySelectorAll('.edit-button')
+  editButtons.forEach((button, index) => {
+      button.addEventListener('click', (e) => {
+          if(container === _projectList__WEBPACK_IMPORTED_MODULE_1__.projectContainer) {
+            console.log(e.target)
+            ;(0,_projectList__WEBPACK_IMPORTED_MODULE_1__.renderProjectEdit)(e)
+          }
+          
+          // renderProjects()
           // renderTasks()
       })
   })
