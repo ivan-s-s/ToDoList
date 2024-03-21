@@ -43,6 +43,27 @@ export function renderProjects() {
   getEditButtons(projectContainer)
 }
 
+// export function renderProjectBoxBack(e, index) {
+//   const projectBox = e.target.closest('li');
+//   console.log(projectBox)
+//   const projectDiv = projectBox.firstChild;
+
+//   const inputElement = projectDiv.childNodes[1];
+
+//   const spanElement = document.createElement('span');
+//   spanElement.textContent = projectList[index].name;
+
+//   inputElement.replaceWith(spanElement);
+
+//   const buttonDiv = projectDiv.lastChild;
+//   const newButtonsDiv = document.createElement('div');
+//   createButton(newButtonsDiv, '', 'edit-button', 'Edit');
+//   createButton(newButtonsDiv, '', 'remove-button', 'X');
+
+//   buttonDiv.replaceWith(newButtonsDiv);
+// }
+
+// создаем форму для редактирования
 export function renderProjectEdit(e, index) {
   console.log('edit start')
 
@@ -51,9 +72,22 @@ export function renderProjectEdit(e, index) {
 
   const titleSpan = projectDiv.childNodes[1];
   const title = titleSpan.textContent;
-  createEditInput('edit-form-input', title, titleSpan);
+  
+  const inputElement = createEditInput('edit-form-input', title, titleSpan);
 
   const buttonsDiv = projectDiv.lastChild;
+  const editModeButtons = createEditButtonsContainer(buttonsDiv);
   
-  createEditButtonsContainer(buttonsDiv);
+  editModeButtons.saveButton.addEventListener('click', () => {
+    // resetProjectDetails(index);
+    console.log(inputElement);
+    projectList[index].name = inputElement.element.value;
+    // renderProjectBoxBack(ee, index);
+    renderProjects()
+  });
+
+  editModeButtons.cancelButton.addEventListener('click', () => {
+    // renderProjectBoxBack(ee, index);
+    renderProjects()
+  });
 }

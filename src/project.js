@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
+import { populateStorage } from "./storage";
 
 export let projectList = [];
 export let allTasksList = [];
@@ -13,10 +14,12 @@ export default class Project {
   addTask(title, description, createdDate, dueDate, priority) {
     const newTask = new Task(title, description, createdDate, dueDate, priority, this.id);
     this.taskList.push(newTask);
+    populateStorage();
   }
 
   deleteTask(index) {
-    this.taskList.splice(index, 1)
+    this.taskList.splice(index, 1);
+    populateStorage();
   }
 }
 
@@ -34,11 +37,13 @@ class Task {
 export function addProject(projectName) {
   const newProject = new Project(projectName);
   projectList.push(newProject);
+  populateStorage();
   return newProject;
 }
 
 export function deleteProject(index) {
   projectList.splice(index, 1);
+  populateStorage();
 }
 
 export function getAllTasks() {

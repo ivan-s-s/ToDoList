@@ -15,6 +15,8 @@ export function renderProjectForm() {
 
   const cancelButtonForm = createButton(newProjectForm, "new-project-cancel-button-id", "new-project-cancel-button-class", "Cancel");
 
+  newProjectForm.querySelector('.input-text').focus();
+
   return {
     newProjectForm,
     createButton: createButtonForm,

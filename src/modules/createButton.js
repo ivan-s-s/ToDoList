@@ -1,3 +1,5 @@
+import { projectList } from "../project";
+
 export function createButton(
   parentElement,
   buttonId,
@@ -13,14 +15,20 @@ export function createButton(
   return buttonElement;
 }
 
+// Edit Project Buttons Container
 export function createEditButtonsContainer(
   oldElement
 ) {
   const buttonContainer = document.createElement('div');
   buttonContainer.className = 'button-container';
 
-  createButton(buttonContainer, '', 'button-container-save', 'Save');
-  createButton(buttonContainer, '', 'button-container-cancel', 'Cancel');
+  const saveButton = createButton(buttonContainer, '', 'edit-mode-button save', 'Save');
+  const cancelButton = createButton(buttonContainer, '', 'edit-mode-button cancel', 'Cancel');
 
   oldElement.replaceWith(buttonContainer);
+
+  return {
+    saveButton,
+    cancelButton
+  }
 }

@@ -35,6 +35,23 @@ export function createInput(
   }
 }
 
+export function createRadioInput(
+  parentElement,
+  value
+) {
+  const elementContainer = document.createElement('div');
+  elementContainer.id = 'radio-container';
+  
+
+  const radioIdsArr = ['one', 'two', 'three', 'four', 'five'];
+
+  for (let i = 0; i < value; i++) {
+    createLabel(elementContainer, null, `mark-${radioIdsArr[i]}`, `${i+1}`);
+    createInput(elementContainer, 'radio', `mark-${radioIdsArr[i]}`, null, null, 'priority');
+  }
+  parentElement.append(elementContainer);
+}
+
 export function createEditInput(
   className,
   value,
@@ -44,6 +61,10 @@ export function createEditInput(
   inputElement.className = className;
   inputElement.value = value;
   oldElement.replaceWith(inputElement);
+
+  return {
+    element: inputElement
+  }
 }
 
 // нужно добавить редактирование radio элемента

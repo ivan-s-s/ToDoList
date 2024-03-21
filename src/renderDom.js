@@ -56,7 +56,7 @@ export function getEditButtons(container) {
       button.addEventListener('click', (e) => {
           if(container === projectContainer) {
             console.log(e.target)
-            renderProjectEdit(e)
+            renderProjectEdit(e, index)
           }
           
           // renderProjects()
@@ -64,3 +64,33 @@ export function getEditButtons(container) {
       })
   })
 }
+
+// // слушатель события на кнопки редактирования проекта (внутри редактирования)
+// export function getEditButtons(container) {
+//   let saveButton = container.querySelector('.save');
+//   let cancelButton = container.querySelector('.cancel');
+
+//   saveButton.addEventListener('click', (e) => {
+    
+//   });
+
+//   cancelButton.addEventListener('click', (e) => {
+
+//   })
+
+//   editModeButtons.forEach((button, index) => {
+//       button.addEventListener('click', (e) => {
+//           if(container === projectContainer) {
+//             console.log(e.target)
+//             renderProjectEdit(e)
+//           }
+          
+//           // renderProjects()
+//           // renderTasks()
+//       })
+//   })
+// }
+
+// export function resetProjectDetails(index) {
+
+// }
