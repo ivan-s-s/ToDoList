@@ -33,29 +33,6 @@ else {
     // projectList[0].taskList = allTasksList
 }
 
-
-newProjectButton.addEventListener('click', () => {
-  if(projectContainer.nextElementSibling != newProjectButton) {
-    return
-  }
-  const form = renderProjectForm();
-  form.createButton.addEventListener('click', () => {
-    const element = document.getElementById('project-name-input')
-    const name = element.value
-    if (!name) {
-      console.log('Enter the name of your project pls!')
-    } else {
-      addProject(name)
-      renderProjects()
-      element.value = ''
-      form.newProjectForm.remove()
-    }
-  })
-  form.cancleButton.addEventListener('click', () => {
-    form.newProjectForm.remove()
-  })
-})
-
 renderProjects();
 
 renderTaskForm();
