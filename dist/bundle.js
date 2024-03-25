@@ -1023,6 +1023,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _modules_createInput__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/createInput */ "./src/modules/createInput.js");
 /* harmony import */ var _modules_createButton__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/createButton */ "./src/modules/createButton.js");
+/* harmony import */ var _projectList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./projectList */ "./src/projectList.js");
+/* harmony import */ var _project__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./project */ "./src/project.js");
+
+
 
 
 
@@ -1048,6 +1052,28 @@ function renderProjectForm() {
     cancleButton: cancelButtonForm
   }
 }
+
+newProjectButton.addEventListener('click', () => {
+  if(_projectList__WEBPACK_IMPORTED_MODULE_2__.projectContainer.nextElementSibling != newProjectButton) {
+    return
+  }
+  const form = renderProjectForm();
+  form.createButton.addEventListener('click', () => {
+    const element = document.getElementById('project-name-input')
+    const name = element.value
+    if (!name) {
+      console.log('Enter the name of your project pls!')
+    } else {
+      (0,_project__WEBPACK_IMPORTED_MODULE_3__.addProject)(name)
+      ;(0,_projectList__WEBPACK_IMPORTED_MODULE_2__.renderProjects)()
+      element.value = ''
+      form.newProjectForm.remove()
+    }
+  })
+  form.cancleButton.addEventListener('click', () => {
+    form.newProjectForm.remove()
+  })
+})
 
 /***/ }),
 
@@ -1104,8 +1130,8 @@ function renderProjects() {
     const projectButtonContainer = document.createElement('div');
     projectButtonContainer.className = 'button-container';
 
-    (0,_modules_createButton__WEBPACK_IMPORTED_MODULE_2__.createButton)(projectButtonContainer, '', 'edit-button', 'Edit');
-    (0,_modules_createButton__WEBPACK_IMPORTED_MODULE_2__.createButton)(projectButtonContainer, '', 'remove-button', 'X');
+    (0,_modules_createButton__WEBPACK_IMPORTED_MODULE_2__.createButton)(projectButtonContainer, 'edit', 'edit-button', 'Edit');
+    (0,_modules_createButton__WEBPACK_IMPORTED_MODULE_2__.createButton)(projectButtonContainer, 'remove', 'remove-button', 'X');
 
     projectDiv.append(projectButtonContainer);
   })
@@ -5148,30 +5174,7 @@ else {
     // projectList[0].taskList = allTasksList
 }
 
-
-_projectForm__WEBPACK_IMPORTED_MODULE_2__.newProjectButton.addEventListener('click', () => {
-  if(_projectList__WEBPACK_IMPORTED_MODULE_3__.projectContainer.nextElementSibling != _projectForm__WEBPACK_IMPORTED_MODULE_2__.newProjectButton) {
-    return
-  }
-  const form = (0,_projectForm__WEBPACK_IMPORTED_MODULE_2__.renderProjectForm)();
-  form.createButton.addEventListener('click', () => {
-    const element = document.getElementById('project-name-input')
-    const name = element.value
-    if (!name) {
-      console.log('Enter the name of your project pls!')
-    } else {
-      (0,_project__WEBPACK_IMPORTED_MODULE_4__.addProject)(name)
-      ;(0,_projectList__WEBPACK_IMPORTED_MODULE_3__.renderProjects)()
-      element.value = ''
-      form.newProjectForm.remove()
-    }
-  })
-  form.cancleButton.addEventListener('click', () => {
-    form.newProjectForm.remove()
-  })
-})
-
-;(0,_projectList__WEBPACK_IMPORTED_MODULE_3__.renderProjects)();
+(0,_projectList__WEBPACK_IMPORTED_MODULE_3__.renderProjects)();
 
 (0,_taskForm_js__WEBPACK_IMPORTED_MODULE_6__.renderTaskForm)();
 })();
