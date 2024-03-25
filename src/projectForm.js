@@ -1,5 +1,7 @@
 import { createLabel, createInput } from './modules/createInput';
 import { createButton } from './modules/createButton';
+import { projectContainer, renderProjects } from './projectList';
+import { addProject } from './project';
 
 export const newProjectButton = document.querySelector('#new-project-button');
 // создание формы
@@ -23,3 +25,25 @@ export function renderProjectForm() {
     cancleButton: cancelButtonForm
   }
 }
+
+newProjectButton.addEventListener('click', () => {
+  if(projectContainer.nextElementSibling != newProjectButton) {
+    return
+  }
+  const form = renderProjectForm();
+  form.createButton.addEventListener('click', () => {
+    const element = document.getElementById('project-name-input')
+    const name = element.value
+    if (!name) {
+      console.log('Enter the name of your project pls!')
+    } else {
+      addProject(name)
+      renderProjects()
+      element.value = ''
+      form.newProjectForm.remove()
+    }
+  })
+  form.cancleButton.addEventListener('click', () => {
+    form.newProjectForm.remove()
+  })
+})
