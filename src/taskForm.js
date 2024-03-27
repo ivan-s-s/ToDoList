@@ -1,5 +1,8 @@
 import { createButton } from "./modules/createButton";
 import { createLabel, createInput, createRadioInput } from "./modules/createInput";
+import { projectList } from "./project";
+import { projectContainer } from "./projectList";
+import { taskContainer } from "./taskList";
 
 export const newTaskButton = document.querySelector('#new-task-button');
 
@@ -31,5 +34,73 @@ export function renderTaskForm() {
     newTaskForm,
     createButton: createButtonForm,
     cancleButton: cancelButtonForm
+  }
+}
+
+newTaskButton.addEventListener('click', () => {
+  if(taskContainer.nextElementSibling != newTaskButton) {
+    console.log(taskContainer.nextElementSibling)
+    console.log(newTaskButton)
+    console.log(taskContainer.nextElementSibling != newTaskButton)
+    return
+  }
+  const form = renderTaskForm();
+  form.createButton.addEventListener('click', () => {
+    // const projectIndex = getProjectIndex();
+    const projectIndex = 0;
+    console.log(projectIndex);
+    
+    // title, description, createdDate, dueDate, priority
+    const title = document.getElementById('task-name-input');
+    const description = document.getElementById('task-desc-input');
+    const createdDate = new Date();
+    const dueDate = document.getElementById('task-date-input');
+    const priority = getRadioValue();
+    
+    if (!title) {
+      console.log('Enter the title of your task pls!')
+    } else {
+      console.log(projectIndex)
+      console.log(projectList[projectIndex])
+      projectList[projectIndex].addTask(title.value, description.value, createdDate, dueDate.value, priority);
+      // renderProjects() - надо отрендерить новый список тасков
+      title.value = '';
+      description.value = '';
+      dueDate.value = '';
+      clearRadioValue();
+      form.newTaskForm.remove();
+    }
+  })
+  form.cancleButton.addEventListener('click', () => {
+    form.newTaskForm.remove()
+  })
+})
+
+const getProjectIndex = () => {
+  const projects = projectContainer.querySelectorAll('.project');
+  projects.forEach((e, index) => {
+    if (e.classList.contains('active')) {
+      return index;
+    }
+  })
+}
+
+const getRadioValue = () => {
+  const radioContainer = document.getElementById('radio-container');
+  const radioMarks = radioContainer.querySelectorAll('.radio-mark');
+
+  for (let mark of radioMarks) {
+    if (mark.checked) {
+      return mark.value;
+    }
+  }
+}
+
+const clearRadioValue = () => {
+  const radioContainer = document.getElementById('radio-container');
+  const radioMarks = radioContainer.querySelectorAll('.radio-mark');
+
+  for (let radio of radioMarks) {
+    radio.checked = false;
   }
 }
