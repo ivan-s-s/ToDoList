@@ -28,8 +28,12 @@ export function renderProjectForm() {
 
 newProjectButton.addEventListener('click', () => {
   if(projectContainer.nextElementSibling != newProjectButton) {
+    console.log(projectContainer.nextElementSibling)
+    console.log(newProjectButton)
+    console.log(projectContainer.nextElementSibling != newProjectButton)
     return
   }
+  console.log(projectContainer.nextElementSibling)
   const form = renderProjectForm();
   form.createButton.addEventListener('click', () => {
     const element = document.getElementById('project-name-input')
