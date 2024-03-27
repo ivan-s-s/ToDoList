@@ -9,10 +9,10 @@ export const projectContainer = document.getElementById('projects-list');
 export function renderProjects() {
   projectContainer.innerHTML = '';
 
-  projectList.forEach(project => {
+  projectList.forEach((project, index) => {
     const projectBox = document.createElement('li');
     projectBox.className = 'project';
-    // projectBox.id = project.id;
+    if (index === 0) projectBox.classList.add('active');
     projectContainer.append(projectBox);
 
     const projectDiv = document.createElement('div');
