@@ -1,13 +1,15 @@
 import './styles/main.css';
 import './styles/aside.css';
+import './styles/taskContainer.css';
 import { format } from 'date-fns';
 
 import { newProjectButton, renderProjectForm } from './projectForm';
-import { projectContainer, renderProjects } from './projectList';
-import { addProject, projectList, getAllTasks, allTasksList } from './project';
+import { newTaskButton, renderTaskForm } from './taskForm.js';
+import { renderProjects } from './projectList';
+import { addProject, getAllTasks, allTasksList } from './project';
 
 import { reloadProjectList } from './storage.js'
-import { renderTaskForm } from './taskForm.js';
+import { renderTasks } from './taskList.js';
 
 console.log(localStorage)
 
@@ -34,5 +36,4 @@ else {
 }
 
 renderProjects();
-
-renderTaskForm();
+renderTasks();
