@@ -7,19 +7,20 @@
   <script defer="defer" src="bundle.js"></script></head>
   <body>
     <div class="container">
-      <header>
-        <h1>ToDo List</h1>
-      </header>
       <main>
         <div class="aside">
-          <div class="aside-title"></div>
+          <h1>ToDo List</h1>
+          <div class="permanent-buttons">
+            <li><span>All Tasks</span></li>
+            <li><span>Today Tasks</span></li>
+            <li><span>Week Tasks</span></li>
+          </div>
+          <div class="aside-title">My Projects</div>
           <div id="projects-list" class="projects-list"></div>
           <button id="new-project-button">Add New Project</button>
         </div>
-        <div id="task-container" class="project-container">
-          <div id="project-title" class="project-title"></div>
-          <div class="project-description"></div>
-          <div class="project-tasks"></div>
+        <div id="tasks-container" class="tasks-container">
+          <div id="tasks-list" class="tasks-list"></div>
           <button id="new-task-button" type="submit">Create Task</button>
         </div>
       </main>
