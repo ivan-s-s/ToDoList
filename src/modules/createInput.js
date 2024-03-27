@@ -46,8 +46,9 @@ export function createRadioInput(
   const radioIdsArr = ['one', 'two', 'three', 'four', 'five'];
 
   for (let i = 0; i < value; i++) {
-    createLabel(elementContainer, null, `mark-${radioIdsArr[i]}`, `${i+1}`);
-    createInput(elementContainer, 'radio', `mark-${radioIdsArr[i]}`, null, null, 'priority');
+    let priorityNumber = i + 1;
+    createLabel(elementContainer, null, `mark-${radioIdsArr[i]}`, `${priorityNumber}`);
+    createInput(elementContainer, 'radio', `mark-${radioIdsArr[i]}`, 'radio-mark', priorityNumber, 'priority');
   }
   parentElement.append(elementContainer);
 }
