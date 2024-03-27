@@ -72,24 +72,40 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/getUrl.js */ "./node_modules/css-loader/dist/runtime/getUrl.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2__);
 // Imports
 
 
+
+var ___CSS_LOADER_URL_IMPORT_0___ = new URL(/* asset import */ __webpack_require__(/*! ../assets/Mukta-Regular.ttf */ "./src/assets/Mukta-Regular.ttf"), __webpack_require__.b);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+var ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(___CSS_LOADER_URL_IMPORT_0___);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `html,
+___CSS_LOADER_EXPORT___.push([module.id, `@font-face {
+  font-family: "Mukta";
+  src: url(${___CSS_LOADER_URL_REPLACEMENT_0___});
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
 body {
+  top: 0;
+  left: 0;
   min-height: 100vh;
   width: 100vw;
-  margin: 0;
-  padding: 0;
   overflow: hidden;
 }
 
 h1,
 h2 {
-  margin: 0;
-  padding: 0;
+  font-family: "Mukta", sans-serif;
+  line-height: 1.5;
 }
 
 li {
@@ -106,8 +122,17 @@ button:hover {
   border: 1px;
 }
 
-main {
+.container {
+  /* width: 80%; */
   display: flex;
+  flex-direction: column;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-row: 1fr;
+  padding-bottom: 50px;
 }
 
 footer {
@@ -120,7 +145,38 @@ footer {
   justify-content: center;
   align-items: center;
 }
-`, "",{"version":3,"sources":["webpack://./src/styles/main.css"],"names":[],"mappings":"AAAA;;EAEE,iBAAiB;EACjB,YAAY;EACZ,SAAS;EACT,UAAU;EACV,gBAAgB;AAClB;;AAEA;;EAEE,SAAS;EACT,UAAU;AACZ;;AAEA;EACE,gBAAgB;AAClB;;AAEA;EACE,uBAAuB;EACvB,YAAY;AACd;;AAEA;EACE,2BAA2B;EAC3B,WAAW;AACb;;AAEA;EACE,aAAa;AACf;;AAEA;EACE,kBAAkB;EAClB,SAAS;EACT,OAAO;EACP,YAAY;EACZ,WAAW;EACX,aAAa;EACb,uBAAuB;EACvB,mBAAmB;AACrB","sourcesContent":["html,\r\nbody {\r\n  min-height: 100vh;\r\n  width: 100vw;\r\n  margin: 0;\r\n  padding: 0;\r\n  overflow: hidden;\r\n}\r\n\r\nh1,\r\nh2 {\r\n  margin: 0;\r\n  padding: 0;\r\n}\r\n\r\nli {\r\n  list-style: none;\r\n}\r\n\r\nbutton {\r\n  background: transparent;\r\n  border: none;\r\n}\r\n\r\nbutton:hover {\r\n  background-color: lightgray;\r\n  border: 1px;\r\n}\r\n\r\nmain {\r\n  display: flex;\r\n}\r\n\r\nfooter {\r\n  position: absolute;\r\n  bottom: 0;\r\n  left: 0;\r\n  height: 50px;\r\n  width: 100%;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n"],"sourceRoot":""}]);
+`, "",{"version":3,"sources":["webpack://./src/styles/main.css"],"names":[],"mappings":"AAAA;EACE,oBAAoB;EACpB,4CAAqC;AACvC;;AAEA;EACE,sBAAsB;EACtB,UAAU;EACV,SAAS;AACX;;AAEA;;EAEE,MAAM;EACN,OAAO;EACP,iBAAiB;EACjB,YAAY;EACZ,gBAAgB;AAClB;;AAEA;;EAEE,gCAAgC;EAChC,gBAAgB;AAClB;;AAEA;EACE,gBAAgB;AAClB;;AAEA;EACE,uBAAuB;EACvB,YAAY;AACd;;AAEA;EACE,2BAA2B;EAC3B,WAAW;AACb;;AAEA;EACE,gBAAgB;EAChB,aAAa;EACb,sBAAsB;AACxB;;AAEA;EACE,aAAa;EACb,8BAA8B;EAC9B,aAAa;EACb,oBAAoB;AACtB;;AAEA;EACE,kBAAkB;EAClB,SAAS;EACT,OAAO;EACP,YAAY;EACZ,WAAW;EACX,aAAa;EACb,uBAAuB;EACvB,mBAAmB;AACrB","sourcesContent":["@font-face {\r\n  font-family: \"Mukta\";\r\n  src: url(../assets/Mukta-Regular.ttf);\r\n}\r\n\r\n* {\r\n  box-sizing: border-box;\r\n  padding: 0;\r\n  margin: 0;\r\n}\r\n\r\nhtml,\r\nbody {\r\n  top: 0;\r\n  left: 0;\r\n  min-height: 100vh;\r\n  width: 100vw;\r\n  overflow: hidden;\r\n}\r\n\r\nh1,\r\nh2 {\r\n  font-family: \"Mukta\", sans-serif;\r\n  line-height: 1.5;\r\n}\r\n\r\nli {\r\n  list-style: none;\r\n}\r\n\r\nbutton {\r\n  background: transparent;\r\n  border: none;\r\n}\r\n\r\nbutton:hover {\r\n  background-color: lightgray;\r\n  border: 1px;\r\n}\r\n\r\n.container {\r\n  /* width: 80%; */\r\n  display: flex;\r\n  flex-direction: column;\r\n}\r\n\r\nmain {\r\n  display: grid;\r\n  grid-template-columns: 1fr 4fr;\r\n  grid-row: 1fr;\r\n  padding-bottom: 50px;\r\n}\r\n\r\nfooter {\r\n  position: absolute;\r\n  bottom: 0;\r\n  left: 0;\r\n  height: 50px;\r\n  width: 100%;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n"],"sourceRoot":""}]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./src/styles/taskContainer.css":
+/*!****************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/styles/taskContainer.css ***!
+  \****************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/sourceMaps.js */ "./node_modules/css-loader/dist/runtime/sourceMaps.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, `.project-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+`, "",{"version":3,"sources":["webpack://./src/styles/taskContainer.css"],"names":[],"mappings":"AAAA;EACE,aAAa;EACb,mBAAmB;EACnB,sBAAsB;AACxB","sourcesContent":[".project-container {\r\n  display: flex;\r\n  align-items: center;\r\n  flex-direction: column;\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -217,6 +273,41 @@ module.exports = function (cssWithMappingToString) {
     }
   };
   return list;
+};
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/runtime/getUrl.js":
+/*!********************************************************!*\
+  !*** ./node_modules/css-loader/dist/runtime/getUrl.js ***!
+  \********************************************************/
+/***/ ((module) => {
+
+
+
+module.exports = function (url, options) {
+  if (!options) {
+    options = {};
+  }
+  if (!url) {
+    return url;
+  }
+  url = String(url.__esModule ? url.default : url);
+
+  // If url is already wrapped in quotes, remove them
+  if (/^['"].*['"]$/.test(url)) {
+    url = url.slice(1, -1);
+  }
+  if (options.hash) {
+    url += options.hash;
+  }
+
+  // Should url be wrapped?
+  // See https://drafts.csswg.org/css-values-3/#urls
+  if (/["'() \t\n]|(%20)/.test(url) || options.needQuotes) {
+    return "\"".concat(url.replace(/"/g, '\\"').replace(/\n/g, "\\n"), "\"");
+  }
+  return url;
 };
 
 /***/ }),
@@ -350,6 +441,60 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 
        /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_main_css__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_css_loader_dist_cjs_js_main_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_css_loader_dist_cjs_js_main_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
+
+
+/***/ }),
+
+/***/ "./src/styles/taskContainer.css":
+/*!**************************************!*\
+  !*** ./src/styles/taskContainer.css ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/styleDomAPI.js */ "./node_modules/style-loader/dist/runtime/styleDomAPI.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/insertBySelector.js */ "./node_modules/style-loader/dist/runtime/insertBySelector.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js */ "./node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/insertStyleElement.js */ "./node_modules/style-loader/dist/runtime/insertStyleElement.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/styleTagTransform.js */ "./node_modules/style-loader/dist/runtime/styleTagTransform.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_taskContainer_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../../node_modules/css-loader/dist/cjs.js!./taskContainer.css */ "./node_modules/css-loader/dist/cjs.js!./src/styles/taskContainer.css");
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+var options = {};
+
+options.styleTagTransform = (_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default());
+options.setAttributes = (_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default());
+
+      options.insert = _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default().bind(null, "head");
+    
+options.domAPI = (_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default());
+options.insertStyleElement = (_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default());
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_taskContainer_css__WEBPACK_IMPORTED_MODULE_6__["default"], options);
+
+
+
+
+       /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_taskContainer_css__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_css_loader_dist_cjs_js_taskContainer_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_css_loader_dist_cjs_js_taskContainer_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
 
 
 /***/ }),
@@ -907,8 +1052,9 @@ function createRadioInput(
   const radioIdsArr = ['one', 'two', 'three', 'four', 'five'];
 
   for (let i = 0; i < value; i++) {
-    createLabel(elementContainer, null, `mark-${radioIdsArr[i]}`, `${i+1}`);
-    createInput(elementContainer, 'radio', `mark-${radioIdsArr[i]}`, null, null, 'priority');
+    let priorityNumber = i + 1;
+    createLabel(elementContainer, null, `mark-${radioIdsArr[i]}`, `${priorityNumber}`);
+    createInput(elementContainer, 'radio', `mark-${radioIdsArr[i]}`, 'radio-mark', priorityNumber, 'priority');
   }
   parentElement.append(elementContainer);
 }
@@ -1055,8 +1201,12 @@ function renderProjectForm() {
 
 newProjectButton.addEventListener('click', () => {
   if(_projectList__WEBPACK_IMPORTED_MODULE_2__.projectContainer.nextElementSibling != newProjectButton) {
+    console.log(_projectList__WEBPACK_IMPORTED_MODULE_2__.projectContainer.nextElementSibling)
+    console.log(newProjectButton)
+    console.log(_projectList__WEBPACK_IMPORTED_MODULE_2__.projectContainer.nextElementSibling != newProjectButton)
     return
   }
+  console.log(_projectList__WEBPACK_IMPORTED_MODULE_2__.projectContainer.nextElementSibling)
   const form = renderProjectForm();
   form.createButton.addEventListener('click', () => {
     const element = document.getElementById('project-name-input')
@@ -1105,10 +1255,10 @@ const projectContainer = document.getElementById('projects-list');
 function renderProjects() {
   projectContainer.innerHTML = '';
 
-  _project__WEBPACK_IMPORTED_MODULE_0__.projectList.forEach(project => {
+  _project__WEBPACK_IMPORTED_MODULE_0__.projectList.forEach((project, index) => {
     const projectBox = document.createElement('li');
     projectBox.className = 'project';
-    // projectBox.id = project.id;
+    if (index === 0) projectBox.classList.add('active');
     projectContainer.append(projectBox);
 
     const projectDiv = document.createElement('div');
@@ -1130,8 +1280,8 @@ function renderProjects() {
     const projectButtonContainer = document.createElement('div');
     projectButtonContainer.className = 'button-container';
 
-    (0,_modules_createButton__WEBPACK_IMPORTED_MODULE_2__.createButton)(projectButtonContainer, 'edit', 'edit-button', 'Edit');
-    (0,_modules_createButton__WEBPACK_IMPORTED_MODULE_2__.createButton)(projectButtonContainer, 'remove', 'remove-button', 'X');
+    (0,_modules_createButton__WEBPACK_IMPORTED_MODULE_2__.createButton)(projectButtonContainer, '', 'edit-button', 'Edit');
+    (0,_modules_createButton__WEBPACK_IMPORTED_MODULE_2__.createButton)(projectButtonContainer, '', 'remove-button', 'X');
 
     projectDiv.append(projectButtonContainer);
   })
@@ -1347,6 +1497,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _modules_createButton__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/createButton */ "./src/modules/createButton.js");
 /* harmony import */ var _modules_createInput__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/createInput */ "./src/modules/createInput.js");
+/* harmony import */ var _project__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./project */ "./src/project.js");
+/* harmony import */ var _projectList__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./projectList */ "./src/projectList.js");
+/* harmony import */ var _taskList__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./taskList */ "./src/taskList.js");
+
+
+
 
 
 
@@ -1382,6 +1538,110 @@ function renderTaskForm() {
     cancleButton: cancelButtonForm
   }
 }
+
+newTaskButton.addEventListener('click', () => {
+  if(_taskList__WEBPACK_IMPORTED_MODULE_4__.taskContainer.nextElementSibling != newTaskButton) {
+    console.log(_taskList__WEBPACK_IMPORTED_MODULE_4__.taskContainer.nextElementSibling)
+    console.log(newTaskButton)
+    console.log(_taskList__WEBPACK_IMPORTED_MODULE_4__.taskContainer.nextElementSibling != newTaskButton)
+    return
+  }
+  const form = renderTaskForm();
+  form.createButton.addEventListener('click', () => {
+    // const projectIndex = getProjectIndex();
+    const projectIndex = 0;
+    console.log(projectIndex);
+    
+    // title, description, createdDate, dueDate, priority
+    const title = document.getElementById('task-name-input');
+    const description = document.getElementById('task-desc-input');
+    const createdDate = new Date();
+    const dueDate = document.getElementById('task-date-input');
+    const priority = getRadioValue();
+    
+    if (!title) {
+      console.log('Enter the title of your task pls!')
+    } else {
+      console.log(projectIndex)
+      console.log(_project__WEBPACK_IMPORTED_MODULE_2__.projectList[projectIndex])
+      _project__WEBPACK_IMPORTED_MODULE_2__.projectList[projectIndex].addTask(title.value, description.value, createdDate, dueDate.value, priority);
+      // renderProjects() - надо отрендерить новый список тасков
+      title.value = '';
+      description.value = '';
+      dueDate.value = '';
+      clearRadioValue();
+      form.newTaskForm.remove();
+    }
+  })
+  form.cancleButton.addEventListener('click', () => {
+    form.newTaskForm.remove()
+  })
+})
+
+const getProjectIndex = () => {
+  const projects = _projectList__WEBPACK_IMPORTED_MODULE_3__.projectContainer.querySelectorAll('.project');
+  projects.forEach((e, index) => {
+    if (e.classList.contains('active')) {
+      return index;
+    }
+  })
+}
+
+const getRadioValue = () => {
+  const radioContainer = document.getElementById('radio-container');
+  const radioMarks = radioContainer.querySelectorAll('.radio-mark');
+
+  for (let mark of radioMarks) {
+    if (mark.checked) {
+      return mark.value;
+    }
+  }
+}
+
+const clearRadioValue = () => {
+  const radioContainer = document.getElementById('radio-container');
+  const radioMarks = radioContainer.querySelectorAll('.radio-mark');
+
+  for (let radio of radioMarks) {
+    radio.checked = false;
+  }
+}
+
+/***/ }),
+
+/***/ "./src/taskList.js":
+/*!*************************!*\
+  !*** ./src/taskList.js ***!
+  \*************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   renderTasks: () => (/* binding */ renderTasks),
+/* harmony export */   taskContainer: () => (/* binding */ taskContainer)
+/* harmony export */ });
+/* harmony import */ var _project__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./project */ "./src/project.js");
+
+
+const taskContainer = document.getElementById('tasks-list');
+
+const renderTasks = () => {
+  taskContainer.innerHTML = '';
+
+  _project__WEBPACK_IMPORTED_MODULE_0__.projectList[0].taskList.forEach((task, index) => {
+    console.log(index, task);
+  })
+}
+
+/***/ }),
+
+/***/ "./src/assets/Mukta-Regular.ttf":
+/*!**************************************!*\
+  !*** ./src/assets/Mukta-Regular.ttf ***!
+  \**************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "Mukta-Regular.ttf";
 
 /***/ }),
 
@@ -5042,6 +5302,9 @@ function toDate(argument) {
 /******/ 		return module.exports;
 /******/ 	}
 /******/ 	
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = __webpack_modules__;
+/******/ 	
 /************************************************************************/
 /******/ 	/* webpack/runtime/compat get default export */
 /******/ 	(() => {
@@ -5118,6 +5381,32 @@ function toDate(argument) {
 /******/ 		__webpack_require__.p = scriptUrl;
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/jsonp chunk loading */
+/******/ 	(() => {
+/******/ 		__webpack_require__.b = document.baseURI || self.location.href;
+/******/ 		
+/******/ 		// object to store loaded and loading chunks
+/******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
+/******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
+/******/ 		var installedChunks = {
+/******/ 			"bundle": 0
+/******/ 		};
+/******/ 		
+/******/ 		// no chunk on demand loading
+/******/ 		
+/******/ 		// no prefetching
+/******/ 		
+/******/ 		// no preloaded
+/******/ 		
+/******/ 		// no HMR
+/******/ 		
+/******/ 		// no HMR manifest
+/******/ 		
+/******/ 		// no on chunks loaded
+/******/ 		
+/******/ 		// no jsonp function
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/nonce */
 /******/ 	(() => {
 /******/ 		__webpack_require__.nc = undefined;
@@ -5133,12 +5422,16 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _styles_main_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/main.css */ "./src/styles/main.css");
 /* harmony import */ var _styles_aside_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./styles/aside.css */ "./src/styles/aside.css");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/format.mjs");
-/* harmony import */ var _projectForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./projectForm */ "./src/projectForm.js");
-/* harmony import */ var _projectList__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./projectList */ "./src/projectList.js");
-/* harmony import */ var _project__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./project */ "./src/project.js");
-/* harmony import */ var _storage_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./storage.js */ "./src/storage.js");
-/* harmony import */ var _taskForm_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./taskForm.js */ "./src/taskForm.js");
+/* harmony import */ var _styles_taskContainer_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./styles/taskContainer.css */ "./src/styles/taskContainer.css");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/format.mjs");
+/* harmony import */ var _projectForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./projectForm */ "./src/projectForm.js");
+/* harmony import */ var _taskForm_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./taskForm.js */ "./src/taskForm.js");
+/* harmony import */ var _projectList__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./projectList */ "./src/projectList.js");
+/* harmony import */ var _project__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./project */ "./src/project.js");
+/* harmony import */ var _storage_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./storage.js */ "./src/storage.js");
+/* harmony import */ var _taskList_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./taskList.js */ "./src/taskList.js");
+
+
 
 
 
@@ -5153,30 +5446,29 @@ __webpack_require__.r(__webpack_exports__);
 console.log(localStorage)
 
 if(localStorage.length === 0) {
-    const allTasks = (0,_project__WEBPACK_IMPORTED_MODULE_4__.addProject)('All Tasks')
-    const todayTasks = (0,_project__WEBPACK_IMPORTED_MODULE_4__.addProject)('Today Tasks')
-    const weekTasks = (0,_project__WEBPACK_IMPORTED_MODULE_4__.addProject)('Week Tasks')
+    const allTasks = (0,_project__WEBPACK_IMPORTED_MODULE_6__.addProject)('All Tasks')
+    const todayTasks = (0,_project__WEBPACK_IMPORTED_MODULE_6__.addProject)('Today Tasks')
+    const weekTasks = (0,_project__WEBPACK_IMPORTED_MODULE_6__.addProject)('Week Tasks')
 
-    const books = (0,_project__WEBPACK_IMPORTED_MODULE_4__.addProject)('Read books')
-    const work = (0,_project__WEBPACK_IMPORTED_MODULE_4__.addProject)('Work')
+    const books = (0,_project__WEBPACK_IMPORTED_MODULE_6__.addProject)('Read books')
+    const work = (0,_project__WEBPACK_IMPORTED_MODULE_6__.addProject)('Work')
     
     // title, description, createdDate, dueDate, priority
-    books.addTask('The Lord of the Rings', 'Read the first 3 chapters', (0,date_fns__WEBPACK_IMPORTED_MODULE_7__.format)(new Date(), 'yyyy-MM-dd'), (0,date_fns__WEBPACK_IMPORTED_MODULE_7__.format)(new Date(2024, 3, 24), 'yyyy-MM-dd'), '5')
-    books.addTask('Harry Potter', 'Read the first 2 chapters', (0,date_fns__WEBPACK_IMPORTED_MODULE_7__.format)(new Date(), 'yyyy-MM-dd'), (0,date_fns__WEBPACK_IMPORTED_MODULE_7__.format)(new Date(2024, 3, 28), 'yyyy-MM-dd'), '3')
-    books.addTask('Bible', 'Read the first 1 chapters', (0,date_fns__WEBPACK_IMPORTED_MODULE_7__.format)(new Date(), 'yyyy-MM-dd'), (0,date_fns__WEBPACK_IMPORTED_MODULE_7__.format)(new Date(2024, 5, 1), 'yyyy-MM-dd'), '1')
+    books.addTask('The Lord of the Rings', 'Read the first 3 chapters', (0,date_fns__WEBPACK_IMPORTED_MODULE_9__.format)(new Date(), 'yyyy-MM-dd'), (0,date_fns__WEBPACK_IMPORTED_MODULE_9__.format)(new Date(2024, 3, 24), 'yyyy-MM-dd'), '5')
+    books.addTask('Harry Potter', 'Read the first 2 chapters', (0,date_fns__WEBPACK_IMPORTED_MODULE_9__.format)(new Date(), 'yyyy-MM-dd'), (0,date_fns__WEBPACK_IMPORTED_MODULE_9__.format)(new Date(2024, 3, 28), 'yyyy-MM-dd'), '3')
+    books.addTask('Bible', 'Read the first 1 chapters', (0,date_fns__WEBPACK_IMPORTED_MODULE_9__.format)(new Date(), 'yyyy-MM-dd'), (0,date_fns__WEBPACK_IMPORTED_MODULE_9__.format)(new Date(2024, 5, 1), 'yyyy-MM-dd'), '1')
     
-    ;(0,_project__WEBPACK_IMPORTED_MODULE_4__.getAllTasks)()
-    allTasks.taskList = _project__WEBPACK_IMPORTED_MODULE_4__.allTasksList
+    ;(0,_project__WEBPACK_IMPORTED_MODULE_6__.getAllTasks)()
+    allTasks.taskList = _project__WEBPACK_IMPORTED_MODULE_6__.allTasksList
 }
 else {
-    (0,_storage_js__WEBPACK_IMPORTED_MODULE_5__.reloadProjectList)()
-    ;(0,_project__WEBPACK_IMPORTED_MODULE_4__.getAllTasks)()
+    (0,_storage_js__WEBPACK_IMPORTED_MODULE_7__.reloadProjectList)()
+    ;(0,_project__WEBPACK_IMPORTED_MODULE_6__.getAllTasks)()
     // projectList[0].taskList = allTasksList
 }
 
-(0,_projectList__WEBPACK_IMPORTED_MODULE_3__.renderProjects)();
-
-(0,_taskForm_js__WEBPACK_IMPORTED_MODULE_6__.renderTaskForm)();
+(0,_projectList__WEBPACK_IMPORTED_MODULE_5__.renderProjects)();
+(0,_taskList_js__WEBPACK_IMPORTED_MODULE_8__.renderTasks)();
 })();
 
 /******/ })()
