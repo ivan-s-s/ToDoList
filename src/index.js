@@ -9,7 +9,7 @@ import { renderProjects } from './projectList';
 import { addProject, getAllTasks, allTasksList } from './project';
 
 import { reloadProjectList } from './storage.js'
-import { renderTasks } from './taskList.js';
+// import { renderTasks } from './taskList.js';
 
 console.log(localStorage)
 
@@ -36,4 +36,4 @@ else {
 }
 
 renderProjects();
-renderTasks();
+// renderTasks();
