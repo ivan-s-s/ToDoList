@@ -3,3 +3,12 @@
   align-items: center;
   flex-direction: column;
 }
+
+.task {
+  border: 2px solid black;
+  margin: 20px;
+}
+
+.hide {
+  visibility: hidden;
+}
