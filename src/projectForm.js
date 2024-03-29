@@ -2,6 +2,8 @@ import { createLabel, createInput } from './modules/createInput';
 import { createButton } from './modules/createButton';
 import { projectContainer, renderProjects } from './projectList';
 import { addProject } from './project';
+import { projectList } from './project';
+import { renderTasks } from './taskList';
 
 export const newProjectButton = document.querySelector('#new-project-button');
 // создание формы
@@ -43,6 +45,10 @@ newProjectButton.addEventListener('click', () => {
     } else {
       addProject(name)
       renderProjects()
+
+      const lastProject = projectList.length - 1;
+      renderTasks(lastProject);
+
       element.value = ''
       form.newProjectForm.remove()
     }
