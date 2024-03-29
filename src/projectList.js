@@ -3,8 +3,10 @@ import hashSvg from "./assets/hash.svg";
 import { createButton, createEditButtonsContainer } from "./modules/createButton";
 import { getEditButtons, getRemoveButtons } from "./renderDom";
 import { createEditInput, createInput } from "./modules/createInput";
+import { renderTasks } from "./taskList";
 
 export const projectContainer = document.getElementById('projects-list');
+// export let projectIndexToCreateBtn;
 
 export function renderProjects() {
   projectContainer.innerHTML = '';
@@ -38,6 +40,11 @@ export function renderProjects() {
     createButton(projectButtonContainer, '', 'remove-button', 'X');
 
     projectDiv.append(projectButtonContainer);
+
+    projectDiv.addEventListener('click', () => {
+      // projectIndexToCreateBtn = index;
+      renderTasks(index);
+    })
   })
   getRemoveButtons(projectContainer)
   getEditButtons(projectContainer)
