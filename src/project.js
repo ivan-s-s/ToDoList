@@ -1,4 +1,3 @@
-import { v4 as uuidv4 } from 'uuid';
 import { populateStorage } from "./storage";
 
 export let projectList = [];
@@ -7,12 +6,11 @@ export let allTasksList = [];
 export default class Project {
   constructor(name) {
     this.name = name;
-    this.id = uuidv4();
     this.taskList = [];
   }
 
   addTask(title, description, createdDate, dueDate, priority) {
-    const newTask = new Task(title, description, createdDate, dueDate, priority, this.id);
+    const newTask = new Task(title, description, createdDate, dueDate, priority);
     this.taskList.push(newTask);
     populateStorage();
   }
@@ -30,7 +28,7 @@ class Task {
     this.createdDate = createdDate;
     this.dueDate = dueDate;
     this.priority = priority;
-    this.projectId = projectId;
+    this.projectIndex = projectId;
   }
 }
 
@@ -51,7 +49,8 @@ export function getAllTasks() {
   projectList.forEach((project, index) => {
     if(index > 0) {
       project.taskList.forEach(task => {
-        allTasksList.push(task)
+        task.projectIndex = index;
+        allTasksList.push(task);
       })
     }
   })
