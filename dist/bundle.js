@@ -176,7 +176,16 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.project-container {
   align-items: center;
   flex-direction: column;
 }
-`, "",{"version":3,"sources":["webpack://./src/styles/taskContainer.css"],"names":[],"mappings":"AAAA;EACE,aAAa;EACb,mBAAmB;EACnB,sBAAsB;AACxB","sourcesContent":[".project-container {\r\n  display: flex;\r\n  align-items: center;\r\n  flex-direction: column;\r\n}\r\n"],"sourceRoot":""}]);
+
+.task {
+  border: 2px solid black;
+  margin: 20px;
+}
+
+.hide {
+  visibility: hidden;
+}
+`, "",{"version":3,"sources":["webpack://./src/styles/taskContainer.css"],"names":[],"mappings":"AAAA;EACE,aAAa;EACb,mBAAmB;EACnB,sBAAsB;AACxB;;AAEA;EACE,uBAAuB;EACvB,YAAY;AACd;;AAEA;EACE,kBAAkB;AACpB","sourcesContent":[".project-container {\r\n  display: flex;\r\n  align-items: center;\r\n  flex-direction: column;\r\n}\r\n\r\n.task {\r\n  border: 2px solid black;\r\n  margin: 20px;\r\n}\r\n\r\n.hide {\r\n  visibility: hidden;\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -766,182 +775,6 @@ module.exports = styleTagTransform;
 
 /***/ }),
 
-/***/ "./node_modules/uuid/dist/esm-browser/native.js":
-/*!******************************************************!*\
-  !*** ./node_modules/uuid/dist/esm-browser/native.js ***!
-  \******************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-const randomUUID = typeof crypto !== 'undefined' && crypto.randomUUID && crypto.randomUUID.bind(crypto);
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  randomUUID
-});
-
-/***/ }),
-
-/***/ "./node_modules/uuid/dist/esm-browser/regex.js":
-/*!*****************************************************!*\
-  !*** ./node_modules/uuid/dist/esm-browser/regex.js ***!
-  \*****************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (/^(?:[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}|00000000-0000-0000-0000-000000000000)$/i);
-
-/***/ }),
-
-/***/ "./node_modules/uuid/dist/esm-browser/rng.js":
-/*!***************************************************!*\
-  !*** ./node_modules/uuid/dist/esm-browser/rng.js ***!
-  \***************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ rng)
-/* harmony export */ });
-// Unique ID creation requires a high quality random # generator. In the browser we therefore
-// require the crypto API and do not support built-in fallback to lower quality random number
-// generators (like Math.random()).
-let getRandomValues;
-const rnds8 = new Uint8Array(16);
-function rng() {
-  // lazy load so that environments that need to polyfill have a chance to do so
-  if (!getRandomValues) {
-    // getRandomValues needs to be invoked in a context where "this" is a Crypto implementation.
-    getRandomValues = typeof crypto !== 'undefined' && crypto.getRandomValues && crypto.getRandomValues.bind(crypto);
-
-    if (!getRandomValues) {
-      throw new Error('crypto.getRandomValues() not supported. See https://github.com/uuidjs/uuid#getrandomvalues-not-supported');
-    }
-  }
-
-  return getRandomValues(rnds8);
-}
-
-/***/ }),
-
-/***/ "./node_modules/uuid/dist/esm-browser/stringify.js":
-/*!*********************************************************!*\
-  !*** ./node_modules/uuid/dist/esm-browser/stringify.js ***!
-  \*********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
-/* harmony export */   unsafeStringify: () => (/* binding */ unsafeStringify)
-/* harmony export */ });
-/* harmony import */ var _validate_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./validate.js */ "./node_modules/uuid/dist/esm-browser/validate.js");
-
-/**
- * Convert array of 16 byte values to UUID string format of the form:
- * XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
- */
-
-const byteToHex = [];
-
-for (let i = 0; i < 256; ++i) {
-  byteToHex.push((i + 0x100).toString(16).slice(1));
-}
-
-function unsafeStringify(arr, offset = 0) {
-  // Note: Be careful editing this code!  It's been tuned for performance
-  // and works in ways you may not expect. See https://github.com/uuidjs/uuid/pull/434
-  return byteToHex[arr[offset + 0]] + byteToHex[arr[offset + 1]] + byteToHex[arr[offset + 2]] + byteToHex[arr[offset + 3]] + '-' + byteToHex[arr[offset + 4]] + byteToHex[arr[offset + 5]] + '-' + byteToHex[arr[offset + 6]] + byteToHex[arr[offset + 7]] + '-' + byteToHex[arr[offset + 8]] + byteToHex[arr[offset + 9]] + '-' + byteToHex[arr[offset + 10]] + byteToHex[arr[offset + 11]] + byteToHex[arr[offset + 12]] + byteToHex[arr[offset + 13]] + byteToHex[arr[offset + 14]] + byteToHex[arr[offset + 15]];
-}
-
-function stringify(arr, offset = 0) {
-  const uuid = unsafeStringify(arr, offset); // Consistency check for valid UUID.  If this throws, it's likely due to one
-  // of the following:
-  // - One or more input array values don't map to a hex octet (leading to
-  // "undefined" in the uuid)
-  // - Invalid input values for the RFC `version` or `variant` fields
-
-  if (!(0,_validate_js__WEBPACK_IMPORTED_MODULE_0__["default"])(uuid)) {
-    throw TypeError('Stringified UUID is invalid');
-  }
-
-  return uuid;
-}
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (stringify);
-
-/***/ }),
-
-/***/ "./node_modules/uuid/dist/esm-browser/v4.js":
-/*!**************************************************!*\
-  !*** ./node_modules/uuid/dist/esm-browser/v4.js ***!
-  \**************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _native_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./native.js */ "./node_modules/uuid/dist/esm-browser/native.js");
-/* harmony import */ var _rng_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./rng.js */ "./node_modules/uuid/dist/esm-browser/rng.js");
-/* harmony import */ var _stringify_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./stringify.js */ "./node_modules/uuid/dist/esm-browser/stringify.js");
-
-
-
-
-function v4(options, buf, offset) {
-  if (_native_js__WEBPACK_IMPORTED_MODULE_0__["default"].randomUUID && !buf && !options) {
-    return _native_js__WEBPACK_IMPORTED_MODULE_0__["default"].randomUUID();
-  }
-
-  options = options || {};
-  const rnds = options.random || (options.rng || _rng_js__WEBPACK_IMPORTED_MODULE_1__["default"])(); // Per 4.4, set bits for version and `clock_seq_hi_and_reserved`
-
-  rnds[6] = rnds[6] & 0x0f | 0x40;
-  rnds[8] = rnds[8] & 0x3f | 0x80; // Copy bytes to buffer, if provided
-
-  if (buf) {
-    offset = offset || 0;
-
-    for (let i = 0; i < 16; ++i) {
-      buf[offset + i] = rnds[i];
-    }
-
-    return buf;
-  }
-
-  return (0,_stringify_js__WEBPACK_IMPORTED_MODULE_2__.unsafeStringify)(rnds);
-}
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (v4);
-
-/***/ }),
-
-/***/ "./node_modules/uuid/dist/esm-browser/validate.js":
-/*!********************************************************!*\
-  !*** ./node_modules/uuid/dist/esm-browser/validate.js ***!
-  \********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _regex_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./regex.js */ "./node_modules/uuid/dist/esm-browser/regex.js");
-
-
-function validate(uuid) {
-  return typeof uuid === 'string' && _regex_js__WEBPACK_IMPORTED_MODULE_0__["default"].test(uuid);
-}
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (validate);
-
-/***/ }),
-
 /***/ "./src/modules/createButton.js":
 /*!*************************************!*\
   !*** ./src/modules/createButton.js ***!
@@ -1093,9 +926,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   getAllTasks: () => (/* binding */ getAllTasks),
 /* harmony export */   projectList: () => (/* binding */ projectList)
 /* harmony export */ });
-/* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! uuid */ "./node_modules/uuid/dist/esm-browser/v4.js");
 /* harmony import */ var _storage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./storage */ "./src/storage.js");
-
 
 
 let projectList = [];
@@ -1104,12 +935,11 @@ let allTasksList = [];
 class Project {
   constructor(name) {
     this.name = name;
-    this.id = (0,uuid__WEBPACK_IMPORTED_MODULE_1__["default"])();
     this.taskList = [];
   }
 
   addTask(title, description, createdDate, dueDate, priority) {
-    const newTask = new Task(title, description, createdDate, dueDate, priority, this.id);
+    const newTask = new Task(title, description, createdDate, dueDate, priority);
     this.taskList.push(newTask);
     (0,_storage__WEBPACK_IMPORTED_MODULE_0__.populateStorage)();
   }
@@ -1127,7 +957,7 @@ class Task {
     this.createdDate = createdDate;
     this.dueDate = dueDate;
     this.priority = priority;
-    this.projectId = projectId;
+    this.projectIndex = projectId;
   }
 }
 
@@ -1148,7 +978,8 @@ function getAllTasks() {
   projectList.forEach((project, index) => {
     if(index > 0) {
       project.taskList.forEach(task => {
-        allTasksList.push(task)
+        task.projectIndex = index;
+        allTasksList.push(task);
       })
     }
   })
@@ -1171,6 +1002,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_createButton__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/createButton */ "./src/modules/createButton.js");
 /* harmony import */ var _projectList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./projectList */ "./src/projectList.js");
 /* harmony import */ var _project__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./project */ "./src/project.js");
+/* harmony import */ var _taskList__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./taskList */ "./src/taskList.js");
+
+
 
 
 
@@ -1216,6 +1050,10 @@ newProjectButton.addEventListener('click', () => {
     } else {
       (0,_project__WEBPACK_IMPORTED_MODULE_3__.addProject)(name)
       ;(0,_projectList__WEBPACK_IMPORTED_MODULE_2__.renderProjects)()
+
+      const lastProject = _project__WEBPACK_IMPORTED_MODULE_3__.projectList.length - 1;
+      (0,_taskList__WEBPACK_IMPORTED_MODULE_4__.renderTasks)(lastProject);
+
       element.value = ''
       form.newProjectForm.remove()
     }
@@ -1244,6 +1082,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_createButton__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/createButton */ "./src/modules/createButton.js");
 /* harmony import */ var _renderDom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./renderDom */ "./src/renderDom.js");
 /* harmony import */ var _modules_createInput__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/createInput */ "./src/modules/createInput.js");
+/* harmony import */ var _taskList__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./taskList */ "./src/taskList.js");
+
 
 
 
@@ -1251,6 +1091,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const projectContainer = document.getElementById('projects-list');
+// export let projectIndexToCreateBtn;
 
 function renderProjects() {
   projectContainer.innerHTML = '';
@@ -1284,6 +1125,11 @@ function renderProjects() {
     (0,_modules_createButton__WEBPACK_IMPORTED_MODULE_2__.createButton)(projectButtonContainer, '', 'remove-button', 'X');
 
     projectDiv.append(projectButtonContainer);
+
+    projectDiv.addEventListener('click', () => {
+      // projectIndexToCreateBtn = index;
+      (0,_taskList__WEBPACK_IMPORTED_MODULE_5__.renderTasks)(index);
+    })
   })
   ;(0,_renderDom__WEBPACK_IMPORTED_MODULE_3__.getRemoveButtons)(projectContainer)
   ;(0,_renderDom__WEBPACK_IMPORTED_MODULE_3__.getEditButtons)(projectContainer)
@@ -1505,6 +1351,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+// import { } from "./projectList";
 
 const newTaskButton = document.querySelector('#new-task-button');
 
@@ -1547,9 +1394,10 @@ newTaskButton.addEventListener('click', () => {
     return
   }
   const form = renderTaskForm();
+  newTaskButton.classList.add('hide');
   form.createButton.addEventListener('click', () => {
     // const projectIndex = getProjectIndex();
-    const projectIndex = 0;
+    const projectIndex = _taskList__WEBPACK_IMPORTED_MODULE_4__.projectIndexToCreateBtn;
     console.log(projectIndex);
     
     // title, description, createdDate, dueDate, priority
@@ -1565,16 +1413,18 @@ newTaskButton.addEventListener('click', () => {
       console.log(projectIndex)
       console.log(_project__WEBPACK_IMPORTED_MODULE_2__.projectList[projectIndex])
       _project__WEBPACK_IMPORTED_MODULE_2__.projectList[projectIndex].addTask(title.value, description.value, createdDate, dueDate.value, priority);
-      // renderProjects() - надо отрендерить новый список тасков
+      (0,_taskList__WEBPACK_IMPORTED_MODULE_4__.renderTasks)(projectIndex);
       title.value = '';
       description.value = '';
       dueDate.value = '';
       clearRadioValue();
       form.newTaskForm.remove();
+      newTaskButton.classList.remove('hide');
     }
   })
   form.cancleButton.addEventListener('click', () => {
-    form.newTaskForm.remove()
+    form.newTaskForm.remove();
+    newTaskButton.classList.remove('hide');
   })
 })
 
@@ -1617,19 +1467,76 @@ const clearRadioValue = () => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   projectIndexToCreateBtn: () => (/* binding */ projectIndexToCreateBtn),
 /* harmony export */   renderTasks: () => (/* binding */ renderTasks),
 /* harmony export */   taskContainer: () => (/* binding */ taskContainer)
 /* harmony export */ });
-/* harmony import */ var _project__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./project */ "./src/project.js");
+/* harmony import */ var _modules_createButton__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/createButton */ "./src/modules/createButton.js");
+/* harmony import */ var _project__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./project */ "./src/project.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/format.mjs");
+
+
 
 
 const taskContainer = document.getElementById('tasks-list');
 
-const renderTasks = () => {
+let projectIndexToCreateBtn;
+
+const renderTasks = (projectIndex) => {
   taskContainer.innerHTML = '';
 
-  _project__WEBPACK_IMPORTED_MODULE_0__.projectList[0].taskList.forEach((task, index) => {
-    console.log(index, task);
+  projectIndexToCreateBtn = projectIndex;
+
+  _project__WEBPACK_IMPORTED_MODULE_1__.projectList[projectIndex].taskList.forEach((task, index) => {
+    const taskLi = document.createElement('li');
+    taskLi.className = 'task';
+    taskContainer.append(taskLi);
+
+    const taskBox = document.createElement('div');
+    taskBox.className = 'task-div';
+    taskLi.append(taskBox);
+
+    // 3 divs in box
+    const checkDiv = document.createElement('div');
+    checkDiv.className = 'check-btn';
+    taskBox.append(checkDiv);
+
+    const taskDiv = document.createElement('div');
+    taskDiv.className = 'task-btn';
+    taskBox.append(taskDiv);
+
+    const buttonsDiv = document.createElement('div');
+    buttonsDiv.className = 'buttons-btn';
+    taskBox.append(buttonsDiv);
+
+    // task content (due date, title, description, created date)
+    const taskDueDate = document.createElement('span');
+    taskDueDate.className = 'task_due_date';
+    taskDueDate.title = 'Deadline';
+    taskDueDate.textContent = (0,date_fns__WEBPACK_IMPORTED_MODULE_2__.format)(task.dueDate, "dd-MM-yyyy");
+    taskDiv.append(taskDueDate);
+
+    const taskTitle = document.createElement('div');
+    taskTitle.className = 'task_title';
+    taskTitle.title = 'Title of the task';
+    taskTitle.textContent = task.title;
+    taskDiv.append(taskTitle);
+
+    const taskDescription = document.createElement('div');
+    taskDescription.className = 'task_description';
+    taskDescription.title = 'Task context';
+    taskDescription.textContent = task.description;
+    taskDiv.append(taskDescription);
+
+    const taskCreatedDate = document.createElement('div');
+    taskCreatedDate.className = 'task_created_date';
+    taskCreatedDate.title = 'Date';
+    taskCreatedDate.textContent = (0,date_fns__WEBPACK_IMPORTED_MODULE_2__.format)(task.createdDate, "dd-MM-yyyy HH:mm");
+    taskDiv.append(taskCreatedDate);
+
+    // button container
+    (0,_modules_createButton__WEBPACK_IMPORTED_MODULE_0__.createButton)(buttonsDiv, '', 'task_edit-button', 'Edit');
+    (0,_modules_createButton__WEBPACK_IMPORTED_MODULE_0__.createButton)(buttonsDiv, '', 'task_remove-button', 'X');
   })
 }
 
@@ -5423,13 +5330,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _styles_main_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/main.css */ "./src/styles/main.css");
 /* harmony import */ var _styles_aside_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./styles/aside.css */ "./src/styles/aside.css");
 /* harmony import */ var _styles_taskContainer_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./styles/taskContainer.css */ "./src/styles/taskContainer.css");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/format.mjs");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/format.mjs");
 /* harmony import */ var _projectForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./projectForm */ "./src/projectForm.js");
 /* harmony import */ var _taskForm_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./taskForm.js */ "./src/taskForm.js");
 /* harmony import */ var _projectList__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./projectList */ "./src/projectList.js");
 /* harmony import */ var _project__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./project */ "./src/project.js");
 /* harmony import */ var _storage_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./storage.js */ "./src/storage.js");
-/* harmony import */ var _taskList_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./taskList.js */ "./src/taskList.js");
 
 
 
@@ -5441,7 +5347,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
+// import { renderTasks } from './taskList.js';
 
 console.log(localStorage)
 
@@ -5454,9 +5360,9 @@ if(localStorage.length === 0) {
     const work = (0,_project__WEBPACK_IMPORTED_MODULE_6__.addProject)('Work')
     
     // title, description, createdDate, dueDate, priority
-    books.addTask('The Lord of the Rings', 'Read the first 3 chapters', (0,date_fns__WEBPACK_IMPORTED_MODULE_9__.format)(new Date(), 'yyyy-MM-dd'), (0,date_fns__WEBPACK_IMPORTED_MODULE_9__.format)(new Date(2024, 3, 24), 'yyyy-MM-dd'), '5')
-    books.addTask('Harry Potter', 'Read the first 2 chapters', (0,date_fns__WEBPACK_IMPORTED_MODULE_9__.format)(new Date(), 'yyyy-MM-dd'), (0,date_fns__WEBPACK_IMPORTED_MODULE_9__.format)(new Date(2024, 3, 28), 'yyyy-MM-dd'), '3')
-    books.addTask('Bible', 'Read the first 1 chapters', (0,date_fns__WEBPACK_IMPORTED_MODULE_9__.format)(new Date(), 'yyyy-MM-dd'), (0,date_fns__WEBPACK_IMPORTED_MODULE_9__.format)(new Date(2024, 5, 1), 'yyyy-MM-dd'), '1')
+    books.addTask('The Lord of the Rings', 'Read the first 3 chapters', (0,date_fns__WEBPACK_IMPORTED_MODULE_8__.format)(new Date(), 'yyyy-MM-dd'), (0,date_fns__WEBPACK_IMPORTED_MODULE_8__.format)(new Date(2024, 3, 24), 'yyyy-MM-dd'), '5')
+    books.addTask('Harry Potter', 'Read the first 2 chapters', (0,date_fns__WEBPACK_IMPORTED_MODULE_8__.format)(new Date(), 'yyyy-MM-dd'), (0,date_fns__WEBPACK_IMPORTED_MODULE_8__.format)(new Date(2024, 3, 28), 'yyyy-MM-dd'), '3')
+    books.addTask('Bible', 'Read the first 1 chapters', (0,date_fns__WEBPACK_IMPORTED_MODULE_8__.format)(new Date(), 'yyyy-MM-dd'), (0,date_fns__WEBPACK_IMPORTED_MODULE_8__.format)(new Date(2024, 5, 1), 'yyyy-MM-dd'), '1')
     
     ;(0,_project__WEBPACK_IMPORTED_MODULE_6__.getAllTasks)()
     allTasks.taskList = _project__WEBPACK_IMPORTED_MODULE_6__.allTasksList
@@ -5468,7 +5374,7 @@ else {
 }
 
 (0,_projectList__WEBPACK_IMPORTED_MODULE_5__.renderProjects)();
-(0,_taskList_js__WEBPACK_IMPORTED_MODULE_8__.renderTasks)();
+// renderTasks();
 })();
 
 /******/ })()
