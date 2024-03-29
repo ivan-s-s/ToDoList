@@ -2,7 +2,8 @@ import { createButton } from "./modules/createButton";
 import { createLabel, createInput, createRadioInput } from "./modules/createInput";
 import { projectList } from "./project";
 import { projectContainer } from "./projectList";
-import { taskContainer } from "./taskList";
+import { renderTasks, taskContainer, projectIndexToCreateBtn } from "./taskList";
+// import { } from "./projectList";
 
 export const newTaskButton = document.querySelector('#new-task-button');
 
@@ -45,9 +46,10 @@ newTaskButton.addEventListener('click', () => {
     return
   }
   const form = renderTaskForm();
+  newTaskButton.classList.add('hide');
   form.createButton.addEventListener('click', () => {
     // const projectIndex = getProjectIndex();
-    const projectIndex = 0;
+    const projectIndex = projectIndexToCreateBtn;
     console.log(projectIndex);
     
     // title, description, createdDate, dueDate, priority
@@ -63,16 +65,18 @@ newTaskButton.addEventListener('click', () => {
       console.log(projectIndex)
       console.log(projectList[projectIndex])
       projectList[projectIndex].addTask(title.value, description.value, createdDate, dueDate.value, priority);
-      // renderProjects() - надо отрендерить новый список тасков
+      renderTasks(projectIndex);
       title.value = '';
       description.value = '';
       dueDate.value = '';
       clearRadioValue();
       form.newTaskForm.remove();
+      newTaskButton.classList.remove('hide');
     }
   })
   form.cancleButton.addEventListener('click', () => {
-    form.newTaskForm.remove()
+    form.newTaskForm.remove();
+    newTaskButton.classList.remove('hide');
   })
 })
 
