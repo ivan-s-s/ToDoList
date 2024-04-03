@@ -51,7 +51,15 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.aside {
   align-items: center;
   justify-self: end;
 }
-`, "",{"version":3,"sources":["webpack://./src/styles/aside.css"],"names":[],"mappings":"AAAA;EACE,SAAS;EACT,UAAU;EACV,aAAa;EACb,sBAAsB;;EAEtB,YAAY;EACZ,aAAa;AACf;;AAEA;EACE,WAAW;EACX,aAAa;EACb,qBAAqB;EACrB,mBAAmB;EACnB,8BAA8B;AAChC;;AAEA;EACE,WAAW;EACX,iBAAiB;EACjB,kBAAkB;AACpB;;AAEA;EACE,aAAa;EACb,uBAAuB;EACvB,mBAAmB;EACnB,iBAAiB;AACnB","sourcesContent":[".aside {\r\n  margin: 0;\r\n  padding: 0;\r\n  display: flex;\r\n  flex-direction: column;\r\n\r\n  width: 280px;\r\n  height: 100vh;\r\n}\r\n\r\n.project-div {\r\n  width: 100%;\r\n  display: flex;\r\n  background-color: red;\r\n  align-items: center;\r\n  justify-content: space-between;\r\n}\r\n\r\n.project-title {\r\n  width: 100%;\r\n  text-align: start;\r\n  padding-left: 10px;\r\n}\r\n\r\n.project-div .button-container {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  justify-self: end;\r\n}\r\n"],"sourceRoot":""}]);
+
+.project {
+  cursor: pointer;
+}
+
+.project-div:hover {
+  background-color: lightblue;
+}
+`, "",{"version":3,"sources":["webpack://./src/styles/aside.css"],"names":[],"mappings":"AAAA;EACE,SAAS;EACT,UAAU;EACV,aAAa;EACb,sBAAsB;;EAEtB,YAAY;EACZ,aAAa;AACf;;AAEA;EACE,WAAW;EACX,aAAa;EACb,qBAAqB;EACrB,mBAAmB;EACnB,8BAA8B;AAChC;;AAEA;EACE,WAAW;EACX,iBAAiB;EACjB,kBAAkB;AACpB;;AAEA;EACE,aAAa;EACb,uBAAuB;EACvB,mBAAmB;EACnB,iBAAiB;AACnB;;AAEA;EACE,eAAe;AACjB;;AAEA;EACE,2BAA2B;AAC7B","sourcesContent":[".aside {\r\n  margin: 0;\r\n  padding: 0;\r\n  display: flex;\r\n  flex-direction: column;\r\n\r\n  width: 280px;\r\n  height: 100vh;\r\n}\r\n\r\n.project-div {\r\n  width: 100%;\r\n  display: flex;\r\n  background-color: red;\r\n  align-items: center;\r\n  justify-content: space-between;\r\n}\r\n\r\n.project-title {\r\n  width: 100%;\r\n  text-align: start;\r\n  padding-left: 10px;\r\n}\r\n\r\n.project-div .button-container {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  justify-self: end;\r\n}\r\n\r\n.project {\r\n  cursor: pointer;\r\n}\r\n\r\n.project-div:hover {\r\n  background-color: lightblue;\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
