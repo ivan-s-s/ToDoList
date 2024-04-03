@@ -28,3 +28,11 @@
   align-items: center;
   justify-self: end;
 }
+
+.project {
+  cursor: pointer;
+}
+
+.project-div:hover {
+  background-color: lightblue;
+}
